@@ -587,7 +587,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0026905872, y: -0.0060051084, z: -0.000015571713, w: 0.99997836}
-  m_LocalPosition: {x: 0, y: 2.05, z: 0}
+  m_LocalPosition: {x: 0, y: 5.7929997, z: 2.948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -907,10 +907,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 649509353}
-  - component: {fileID: 649509354}
-  - component: {fileID: 649509356}
   - component: {fileID: 649509355}
   - component: {fileID: 649509357}
+  - component: {fileID: 649509359}
+  - component: {fileID: 649509358}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -927,62 +927,13 @@ Transform:
   m_GameObject: {fileID: 649509351}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: 0}
+  m_LocalPosition: {x: 0, y: 4.193, z: 2.948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1931976051}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &649509354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649509351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2518f7552466754092a37ba223c35ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 8
-  rotationSpeed: 10
-  moveDirAgility: 10
-  moveDirChangeAgility: 2.5
-  airAgility: 1.5
-  stamina: 500
-  maxStamina: 500
-  staminaDrain: 0.25
-  staminaRegen: 1
-  staminaBar_fixed: {fileID: 2110389154}
-  staminaRegen_moving: 1
-  staminaRegen_standing: 50
-  jumpForce: 5
-  jumpCoolDown: 0.3
-  groundCheckRadius: 0.2
-  groundCheckDistance: 0.3
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  coyoteTime: 0.2
-  stepRayUpper: {fileID: 315788825}
-  stepRayLower: {fileID: 286900539}
-  stepLowerDefaultHeight: 0.02
-  stepHeight: 0.3
-  stepSmooth: 0.1
-  playerCameraTarget: {fileID: 1509368401}
-  verticalCameraRotationMin: -30
-  verticalCameraRotationMax: 70
-  cameraHorizontalSpeed: 200
-  cameraVerticalSpeed: 130
-  playerCam: {fileID: 1509368403}
-  playerBodyAnim: {fileID: 1900799502}
-  PlayerState: 0
-  _canUseHealthPotion: 0
-  _canUseManaPotion: 0
-  canSwitch: 0
 --- !u!136 &649509355
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1006,33 +957,6 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!54 &649509356
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649509351}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &649509357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,6 +969,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d68f42ea03e8154e81a760303f8fca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &649509358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649509351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08272af6718270545b35d40d6544edec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 649509359}
+  walkSpeed: 5
+  runSpeed: 8
+  jumpForce: 5
+  gravity: -9.81
+  playerCam: {fileID: 1509368401}
+  verticalCameraRotationMin: -30
+  verticalCameraRotationMax: 70
+  cameraHorizontalSpeed: 100
+  cameraVerticalSpeed: 100
+  groundCheckRadius: 0.2
+  groundCheckDistance: 0.3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!143 &649509359
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649509351}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.8
+  m_Radius: 0.25
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &816272114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,11 +1536,6 @@ Transform:
 --- !u!4 &1900799501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4188785271684938, guid: 19601ffa0fe21a0449b6f23a8be4675e, type: 3}
-  m_PrefabInstance: {fileID: 3011576}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1900799502 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95984852126199364, guid: 19601ffa0fe21a0449b6f23a8be4675e, type: 3}
   m_PrefabInstance: {fileID: 3011576}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1931976050
