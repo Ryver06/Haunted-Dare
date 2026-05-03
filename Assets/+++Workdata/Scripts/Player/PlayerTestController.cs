@@ -43,6 +43,7 @@ public class PlayerTestController : MonoBehaviour
     private InputAction lookAction;
     private InputAction moveAction;
     private InputAction jumpAction;
+    private InputAction interactAction;
 
     #endregion
 
@@ -64,6 +65,9 @@ public class PlayerTestController : MonoBehaviour
     //jump
     private bool _isjumping;
     
+    
+    private PlayerInteraction _playerInteraction;
+    
     #endregion
 
     #region Event Functions
@@ -79,10 +83,13 @@ public class PlayerTestController : MonoBehaviour
         lookAction = inputActions.Player.Look;
         moveAction = inputActions.Player.Move;
         jumpAction = inputActions.Player.Jump;
+        interactAction = inputActions.Player.Interact;
         
         cameraTarget = playerCam;
 
         _currentSpeed = walkSpeed;
+        
+        _playerInteraction = GetComponent<PlayerInteraction>();
     }
 
     private void OnEnable()
@@ -97,7 +104,9 @@ public class PlayerTestController : MonoBehaviour
 
         jumpAction.performed += Jump;
         jumpAction.canceled += Jump;
-        
+
+        interactAction.performed += Interaction;
+
     }
 
     private void FixedUpdate()
@@ -131,12 +140,20 @@ public class PlayerTestController : MonoBehaviour
         
         jumpAction.performed -= Jump;
         jumpAction.canceled -= Jump;
+        
+        interactAction.performed -= Interaction;
+        
 
     }
     
     #endregion
 
     #region Input Methods
+    
+    private void Interaction(InputAction.CallbackContext ctx)
+    {
+        _playerInteraction.Interact();
+    }
     
     private void Move(InputAction.CallbackContext ctx)
     {
