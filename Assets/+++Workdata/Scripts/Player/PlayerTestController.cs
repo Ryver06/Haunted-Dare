@@ -66,7 +66,7 @@ public class PlayerTestController : MonoBehaviour
     private bool _isjumping;
     
     
-    private PlayerInteraction _playerInteraction;
+    public PlayerInteraction _playerInteraction;
     
     #endregion
 
@@ -89,7 +89,7 @@ public class PlayerTestController : MonoBehaviour
 
         _currentSpeed = walkSpeed;
         
-        _playerInteraction = GetComponent<PlayerInteraction>();
+        _playerInteraction = GetComponentInChildren<PlayerInteraction>();
     }
 
     private void OnEnable()

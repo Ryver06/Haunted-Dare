@@ -150,10 +150,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDir;
     
     private bool isInventoryOpen;// INVENTORY
-
-    public bool _canUseHealthPotion;
-    public bool _canUseManaPotion;
-    public bool canSwitch;
+    
  
     #region Input
 
@@ -193,8 +190,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        
-        _playerInteraction = GetComponent<PlayerInteraction>();
+
+        _playerInteraction = GetComponentInChildren<PlayerInteraction>();
 
         cameraTarget = playerCameraTarget;
         stepRayUpper.position = new Vector3(stepRayUpper.localPosition.x, stepHeight, stepRayUpper.localPosition.z);
@@ -582,13 +579,7 @@ public class PlayerController : MonoBehaviour
         _canAttack = true;
 
     }
-
-    private IEnumerator SwitchTimer()
-    {
-        canSwitch = false;
-        yield return new WaitForSeconds(0.5f);
-        canSwitch = true;
-    }
+    
   #endregion
   
   
