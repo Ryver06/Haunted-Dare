@@ -1,275 +1,129 @@
-using System;
 using System.Collections;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using Quaternion = UnityEngine.Quaternion;
-using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
 
-public enum PlayerState
-{ Idle, Walking, Running, Jumping, Rolling, Glide, Aiming, Attacking, Interacting, Inventory }
 public class PlayerController : MonoBehaviour
-
 {
+    #region Inspector
+
+    [SerializeField] private CharacterController controller;
     
-    public static Action InventoryAction; // for synchronising inventory
-    public static PlayerController Instance;
-    
-    #region Animator Hashes
-
-    private static readonly int HashMovementSpeed = Animator.StringToHash("MovementSpeed");
-    private static readonly int HashGrounded = Animator.StringToHash("Grounded");
-    private static readonly int HashActionTrigger = Animator.StringToHash("ActionTrigger");
-    private static readonly int HashActionId = Animator.StringToHash("ActionId");
-    private static readonly int HashActionType = Animator.StringToHash("ActionType");
-
-  #endregion
-
-    #region Inspector Variables
-
-    [Header("Movement Setup")]
-    
-    [Min(0)] //sets the minimum speed, so we cant accidentally put in negative numbers
-    [Tooltip("The maximum walking speed of the player in m/s")]
+    [Header("Movement")]
     [SerializeField] private float walkSpeed = 5f;
-
-    [Min(0)]
-    [Tooltip("The maximum running speed of the player in m/s")] 
     [SerializeField] private float runSpeed = 8f;
     
+    [Header("Jump")]
+    [SerializeField] private float jumpForce = 5f;
     
-
-
-    [Tooltip("")] 
-    [SerializeField] private float rotationSpeed = 10f; //rotation of the player
-
-    [Header("Movement Agility")] 
+    [Header("Gravity")]
+    [SerializeField] private float gravity = -9.81f;
     
-    [SerializeField] private float moveDirAgility = 10f;
+    [Header("Jumpscare")]
+    [SerializeField] private GameObject jumpscare;
     
-    [SerializeField] private float moveDirChangeAgility = 2.5f;
-
-    [SerializeField] private float airAgility = 1.5f;
-
-    [Header("Stamina")]
-    [SerializeField] private float stamina;
-    [SerializeField] private float maxStamina; //this is public for the LevelUp System
-    [SerializeField] private float staminaDrain;
-    [SerializeField] private float staminaRegen;
-    [SerializeField] private Image staminaBar_fixed;
+    [Header("Cam settings")]
+    [SerializeField] private Transform playerCam;
     
-    [SerializeField] private float staminaRegen_moving;
-    [SerializeField] private float staminaRegen_standing;
-    
-    
-    [Header("Jump")] 
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float jumpCoolDown = 0.3f;
-
-    
-    
-    [Header("Ground Check")]
-    [SerializeField] private float groundCheckRadius = 0.2f;
-
-    [SerializeField] private float groundCheckDistance = 0.3f;
-
-    [SerializeField] private LayerMask groundLayer;
-
-    [SerializeField] private float coyoteTime = 0.2f;
-
-    [Header("Step Climb")] 
-    [SerializeField] private Transform stepRayUpper;
-    [SerializeField] private Transform stepRayLower;
-
-    
-    [SerializeField] private float stepLowerDefaultHeight = 0.02f;
-    [Tooltip("Max height the player can step up")]
-    [SerializeField] private float stepHeight = 0.3f;
-    [Tooltip("the height the player is boosted up when there's a step")]
-    [SerializeField] private float stepSmooth = 0.1f;
-    
-    [Header("Camera")] 
-    //[SerializeField] private Transform cameraRig;
-    [SerializeField] private Transform playerCameraTarget;
-
     [SerializeField] private float verticalCameraRotationMin = -30f;
     [SerializeField] private float verticalCameraRotationMax = 70f;
     
     [SerializeField] private float cameraHorizontalSpeed = 200f;
     [SerializeField] private float cameraVerticalSpeed = 130;
-
-    [SerializeField] private CinemachineCamera playerCam;
     
-    
-    [Header("Animator")] 
-    public Animator playerBodyAnim;
-    
-    
-    
-    
+    [Header("Ground Check")]
+    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private float groundCheckDistance = 0.3f;
+    [SerializeField] private LayerMask groundLayer;
 
-  #endregion
-  
-    #region private Variables
-   
-   public PlayerState PlayerState;
+    #endregion
 
-    private PlayerInteraction _playerInteraction;  //interactions
-  
-    private Rigidbody rb;
-    
-    private Vector2 _lookInput;     //movement
-    private Vector2 _moveInput;
+    #region Private Variables
 
-    private Quaternion _characterTargetRotation; 
-    private Vector2 _cameraRotation;
-    private Vector2 _playerRotation;
-    private Transform cameraTarget;
-
-    private bool _isGrounded;
-    private float _airTime;
-    private float _rollStartTime;
-    private float _currentSpeed;
-
-    private bool _canRun;
-    private bool _isRunning;
-    private bool _isRolling = false;
-    private bool _isGliding;
-    private bool _isAiming;
-
-    private bool _canJump = true;
-    private bool _canAttack;
-    private bool _canGlide;   //movement
-
-    private bool hasRegenerated;
-
-    private bool isInverted;
-
-    private Vector3 moveDir;
-    
-    private bool isInventoryOpen;// INVENTORY
-    
- 
     #region Input
 
-        //movement
-         private GameInput inputActions;
-         private InputAction lookAction;
-         private InputAction moveAction;
-         private InputAction runAction;
-         private InputAction jumpAction;
-         private InputAction rollAction;
-         
-         //gliding
-         private InputAction glideAction;
-         
-         //weapons
-         private InputAction aimAction;
-         private InputAction attackAction;
-         
-         //potions
-         private InputAction potionAction;
-         private InputAction switchingAction;
-         
-         //Interaction
-         private InputAction interactAction;
-         
-         //Inventory
-         private InputAction inventoryAction;
-         
+    private GameInput inputActions;
+    private InputAction lookAction;
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private InputAction interactAction;
 
-     #endregion
+    #endregion
 
+    //movement
+    private Vector2 _moveInput;
+    private Vector3 _moveDir;
+    private float _currentSpeed;
+    
+    //player 1st person cam
+    private Vector2 _lookInput;
+    private Vector2 _cameraRotation;
+    private Transform cameraTarget;
+    private bool isInverted;
+    
+    //gravity
+    private Vector3 velocity;
+    private bool _isGrounded;
 
-#endregion
+    //jump
+    private bool _isjumping;
+    
+    
+    public PlayerInteraction _playerInteraction;
+    
+    #endregion
 
-    #region Unity Eventfunctions
+    #region Event Functions
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked; //hides cursor
+    }
 
     private void Awake()
     {
-        Instance = this;
-
-        _playerInteraction = GetComponentInChildren<PlayerInteraction>();
-
-        cameraTarget = playerCameraTarget;
-        stepRayUpper.position = new Vector3(stepRayUpper.localPosition.x, stepHeight, stepRayUpper.localPosition.z);
-        stepRayLower.position = new Vector3(stepRayLower.localPosition.x, stepLowerDefaultHeight, stepRayLower.localPosition.z);
-
-        
-        rb = GetComponent<Rigidbody>();
-        
         inputActions = new GameInput();
         lookAction = inputActions.Player.Look;
         moveAction = inputActions.Player.Move;
-        runAction = inputActions.Player.Sprint;
         jumpAction = inputActions.Player.Jump;
-        attackAction = inputActions.Player.Attack;
         interactAction = inputActions.Player.Interact;
         
+        cameraTarget = playerCam;
+
+        _currentSpeed = walkSpeed;
         
-        staminaRegen = staminaRegen_standing;
+        _playerInteraction = GetComponentInChildren<PlayerInteraction>();
     }
 
     private void OnEnable()
     {
-        inputActions.Enable();
+        EnabelInput();
 
         lookAction.performed += Look;
         lookAction.canceled += Look;
         
         moveAction.performed += Move;
         moveAction.canceled += Move;
-        
-        runAction.performed += Run;
-        runAction.canceled += Run;
 
         jumpAction.performed += Jump;
-        
+        jumpAction.canceled += Jump;
+
         interactAction.performed += Interaction;
 
-    }
-
-    private void Start()
-    {
-        _currentSpeed = walkSpeed;
-        _characterTargetRotation = Quaternion.identity;
-        
-        
     }
 
     private void FixedUpdate()
     {
         CheckGround();
         
-        moveDir = GetWorldInputDir(_moveInput);
-        
-        RotateHandler(moveDir);
-        MoveHandler(moveDir);
-        
-        StepClimbHandler(moveDir);
+        _moveDir = GetWorldInputDir(_moveInput);
     }
 
     private void Update()
     {
-        UpdateAnimator();
-
-        UpdateStamina();
-
-        if (_moveInput == Vector2.zero)
-        {
-            PlayerState = PlayerState.Idle;
-            staminaRegen = staminaRegen_standing;
-        }
-        else
-        {
-            PlayerState = PlayerState.Walking;
-            staminaRegen = staminaRegen_moving;
-        }
-        
+        Movement();
+        Gravity();
     }
-
+    
     private void LateUpdate()
     {
         
@@ -278,7 +132,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        inputActions.Disable();
+        DisableInput();
 
         lookAction.performed -= Look;
         lookAction.canceled -= Look;
@@ -286,40 +140,21 @@ public class PlayerController : MonoBehaviour
         moveAction.performed -= Move;
         moveAction.canceled -= Move;
         
-        runAction.performed -= Run;
-        runAction.canceled -= Run;
-
         jumpAction.performed -= Jump;
-        
+        jumpAction.canceled -= Jump;
         
         interactAction.performed -= Interaction;
         
-       
 
     }
+    
+    #endregion
 
-  #endregion
-
-    #region for UI
-  public void SetInput(bool enabled) // for the UI and Screens
-  {
-      if (enabled) inputActions.Enable();
-      else inputActions.Disable();
-  }
-  #endregion
-   
-    #region Input
-
-
+    #region Input Methods
+    
     private void Interaction(InputAction.CallbackContext ctx)
     {
-       _playerInteraction.Interact();
-    }
-   
-
-    private void Look(InputAction.CallbackContext ctx)
-    {
-        _lookInput = lookAction.ReadValue<Vector2>();
+        _playerInteraction.Interact();
     }
     
     private void Move(InputAction.CallbackContext ctx)
@@ -328,33 +163,72 @@ public class PlayerController : MonoBehaviour
        
     }
     
-    private void Run(InputAction.CallbackContext ctx)
+    private void Look(InputAction.CallbackContext ctx)
     {
-        if (_canRun)
-        {
-            _isRunning = !_isRunning;
-            _currentSpeed = _isRunning ? runSpeed : walkSpeed;
-            
-        }
+        _lookInput = ctx.ReadValue<Vector2>();
     }
     
     private void Jump(InputAction.CallbackContext ctx)
     {
-        if (_isGrounded && _canJump)
+        if (_isGrounded)
         {
-            if (stamina < 20)
-            {
-                return;
-            }
-            
-            //_canJump = false;     keep this commented til anim event is added
-            
-            //playerBodyAnim.SetTrigger(HashJumpTrigger);
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            DrainStamina(20);
-            
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
         }
     }
+    
+    #endregion
+
+    #region GameInput
+
+    public void EnabelInput()
+    {
+        inputActions.Enable();
+    }
+    
+    public void DisableInput()
+    {
+        inputActions.Disable();
+    }
+
+    #endregion
+    
+    #region Camera
+    
+    private void RotateCamera()
+    {
+        if (_lookInput != Vector2.zero)
+        {
+            bool isMouseActive = CheckHardwareInput();
+            float deltaTimeMultiplier = isMouseActive ? 1 : Time.deltaTime;
+
+            _cameraRotation.x += _lookInput.y * cameraVerticalSpeed * deltaTimeMultiplier * (isInverted ? -1 : 1);
+            _cameraRotation.y += _lookInput.x * cameraHorizontalSpeed * deltaTimeMultiplier;
+            
+            _cameraRotation.y += _lookInput.x * cameraHorizontalSpeed * deltaTimeMultiplier;
+
+            _cameraRotation.x = Mathf.Clamp(_cameraRotation.x, verticalCameraRotationMin, verticalCameraRotationMax);
+        }
+
+        cameraTarget.rotation = Quaternion.Euler(_cameraRotation.x, _cameraRotation.y, 0);
+        transform.rotation = Quaternion.Euler(0, _cameraRotation.y, 0); //turn player model same as cam but only on y Axis
+    }
+    
+    private bool CheckHardwareInput()
+    {
+        if (lookAction.activeControl == null) return true;
+
+        return lookAction.activeControl.device.name == "Mouse";
+
+    }
+    
+    #endregion
+
+    private void Movement()
+    {
+        //time.deltatime causes it to be framerate dependend 
+        controller.Move(_moveDir * _currentSpeed * Time.deltaTime);
+    }
+    
     
     private Vector3 GetWorldInputDir(Vector2 moveInput)
     {
@@ -367,298 +241,47 @@ public class PlayerController : MonoBehaviour
 
         return worldDir.normalized;
     }
-    
-    #endregion
 
-    #region Movement
-
-    private void StepClimbHandler(Vector3 worldDir)
+    private void Gravity()
     {
-        if (Physics.Raycast(stepRayLower.position, worldDir, out RaycastHit hitLower, 0.3f))
+        if (_isGrounded && velocity.y < 0)
         {
-            if (!Physics.Raycast(stepRayUpper.position, worldDir, out RaycastHit hitUpper, 0.4f))
-            {
-                rb.position += new Vector3(0f, stepSmooth, 0f); //going up until there's no more an edge detected
-            }
-        }
-    }
-    
-    private void RotateHandler(Vector3 worldDir)
-    {
-        if (worldDir != Vector3.zero)
-        {
-            _characterTargetRotation = Quaternion.LookRotation(worldDir);
+            velocity.y = -2f;
         }
         
-        
-//CHECK THIS OUT FOR LATER
-        Quaternion newRotation = 
-            Quaternion.Slerp(rb.rotation, _characterTargetRotation, rotationSpeed * Time.fixedDeltaTime);
-        //slerp causes for a soft rotation
-        
-        rb.MoveRotation(newRotation);
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
-    
-    private void MoveHandler(Vector3 worldDir)
+
+    public void Jumpscare()
     {
-        float targetSpeed = 0f;
-
-        if (_moveInput != Vector2.zero)
-        {
-            targetSpeed = _currentSpeed;
-        }
-
-        Vector3 targetVelocity = worldDir * targetSpeed;
-        Vector3 currentVelocity = rb.linearVelocity;
-
-        float finalAgility;
-
-        if (_isGrounded)
-        {
-            Vector3 currentDir = currentVelocity.normalized;
-            float directionDot = Vector3.Dot(currentDir, worldDir);
-            float agilityT = (directionDot + 1) / 2;
-
-            float dynamicAgility = Mathf.Lerp(moveDirChangeAgility, moveDirAgility, agilityT);
-
-            finalAgility = currentVelocity.sqrMagnitude < 0.1f ? moveDirAgility : dynamicAgility;
-        }
-        else
-        {
-            finalAgility = airAgility;
-        }
-
-        Vector3 newHorizontalVelocity = Vector3.Lerp(
-            new Vector3(currentVelocity.x, 0, currentVelocity.z),
-            new Vector3(targetVelocity.x, 0, targetVelocity.z),
-            finalAgility * Time.fixedDeltaTime
-        );
-        
-        rb.linearVelocity = new Vector3(newHorizontalVelocity.x, currentVelocity.y, newHorizontalVelocity.z);
-
+        StartCoroutine(JumpscareRoutine());
     }
 
-  #endregion
-
-    #region camera
-
-    private void RotateCamera()
+    private IEnumerator JumpscareRoutine()
     {
-        if (_lookInput != Vector2.zero)
-        {
-            bool isMouseActive = CheckHardwareInput();
-            float deltaTimeMultiplier = isMouseActive ? 1 : Time.deltaTime;
-
-            _cameraRotation.x += _lookInput.y * cameraVerticalSpeed * deltaTimeMultiplier * (isInverted ? -1 : 1);
-            _cameraRotation.y += _lookInput.x * cameraHorizontalSpeed * deltaTimeMultiplier;
-            
-            _cameraRotation.y += _lookInput.x * cameraHorizontalSpeed * deltaTimeMultiplier;
-            
-            //_playerRotation.y += _lookInput.x * cameraVerticalSpeed * deltaTimeMultiplier;
-
-            _cameraRotation.x = Mathf.Clamp(_cameraRotation.x, verticalCameraRotationMin, verticalCameraRotationMax);
-        }
-
-        cameraTarget.rotation = Quaternion.Euler(_cameraRotation.x, _cameraRotation.y, 0);
-        transform.rotation = Quaternion.Euler(0, _cameraRotation.y, 0);
+       DisableInput();
+       jumpscare.SetActive(true);
+       
+       yield return new WaitForSeconds(2f);
+       
+       jumpscare.SetActive(false);
+       EnabelInput(); //TODO replace with GameOver UI
     }
-
-    private bool CheckHardwareInput()
-    {
-        if (lookAction.activeControl == null) return true;
-
-        return lookAction.activeControl.device.name == "Mouse";
-
-    }
-
-  #endregion
 
     #region Ground Check
     
     private void CheckGround()
     {
-        bool isGrounded = Physics.CheckSphere(
+        _isGrounded = Physics.CheckSphere(
             transform.position + Vector3.down * (groundCheckDistance - groundCheckRadius),
             groundCheckRadius,//groundCheckDistance,
             groundLayer);
-
-        if (isGrounded)
-        {
-            _airTime = 0;
-            _canRun = true;
-            
-        }
-        else
-        {
-            _airTime += Time.deltaTime;
-        }
-
-        _isGrounded = _airTime < coyoteTime;
-    }
-
-    
-
-  #endregion
-
-    #region Animations
-
-    public void AnimIsLanding()
-    {
-        StartCoroutine(EnableJump());
-    }
-
-    IEnumerator EnableJump()
-    {
         
-        yield return new WaitForSeconds(jumpCoolDown);
-        _canJump = true;
     }
-    
-    
-    public void AnimAction(int id)
-    {
-        playerBodyAnim.SetTrigger(HashActionTrigger);
-        playerBodyAnim.SetInteger(HashActionId, id);
-    }
-    
-    public void AnimActionType(int actionId)
-    {
-       // playerBodyAnim.SetTrigger(HashActionTypeTrigger);
-        playerBodyAnim.SetInteger(HashActionType, actionId);
-    }
-    
-    private void UpdateAnimator()
-    {
-        Vector3 velocity = rb.linearVelocity;
-        velocity.y = 0;
-        
-        playerBodyAnim.SetFloat(HashMovementSpeed, velocity.magnitude);
-        playerBodyAnim.SetBool(HashGrounded, _isGrounded);
-        
-       
-    }
+
     
 
-  #endregion
+    #endregion
     
-    #region GameInput
-
-         public void DisableInput()
-        {
-            inputActions.Disable();
-         }
-  
-        public void EnableInput()
-        {
-            inputActions.Enable();
-        }
-
-  #endregion
-    
-    #region Courotine
-    
-     public IEnumerator LayerWeight(int layerIndex, float targetWeight, float duration)
-    {
-         float startWeight = playerBodyAnim.GetLayerWeight(layerIndex);
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-         {
-             elapsed += Time.deltaTime;
-            float newWeight = Mathf.Lerp(startWeight, targetWeight, elapsed / duration);
-            playerBodyAnim.SetLayerWeight(layerIndex, newWeight);
-            yield return null;
-        }
-    }
-     
-
-    private IEnumerator AttackCooldown()
-    {
-        _canAttack = false;
-        yield return new WaitForSeconds(1.5f);
-        _canAttack = true;
-
-    }
-    
-  #endregion
-  
-  
-  
-  public int GetCurrentState ()
-  {
-      return (int)PlayerState;
-  }
-
-  #region Stamina
-  
-    
-    //Drain Stamina instantly, instead of slowly
-  private void DrainStamina(int cost)
-  {
-      if (stamina >= 1)
-      {
-          stamina -= cost;
-      }
-  }
-
-  private void UpdateStamina()
-  {
-      
-      float targetFillAmount = (float)stamina / maxStamina;
-      staminaBar_fixed.fillAmount = targetFillAmount;
-      
-      //activates everything that you need stamina for
-      if (stamina >= 1)
-      {
-          _canRun = true;
-          _canGlide = true;
-      }
-      
-      
-      //Regens Stamina
-      if (!_isRunning && !_isGliding && _isGrounded)
-      {
-          if (stamina <= maxStamina - 0.01f)
-          {
-              stamina += staminaRegen * Time.deltaTime;
-
-              if (stamina >= maxStamina)
-              {
-                  stamina = maxStamina;
-              }
-          }
-      }
-
-       
-
-      //deactivating everything that you need stamina for
-      if (stamina <= 0)
-      {
-          stamina = 0;
-          _canRun = false;
-          _isRunning = false;
-          _currentSpeed = walkSpeed;
-      }
-        
-      if (_isRunning)
-      {
-          stamina -= staminaDrain + Time.deltaTime;
-      }
-      
-  }
-  
-  
-  private AnimationState _currentState = AnimationState.Base;
-  enum AnimationState
-  {
-      Base,
-      Locomotion,
-      Jump,
-      Fall,
-      Crouch
-  }
-  
-  
-  #endregion  
- 
 }
