@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static readonly int Hash_MovementValue = Animator.StringToHash("MovementValue");
+
     #region Inspector
 
     [SerializeField] private CharacterController controller;
@@ -20,6 +22,9 @@ public class PlayerController : MonoBehaviour
     
     [Header("Jumpscare")]
     [SerializeField] private GameObject jumpscare;
+    
+    [Header("Flashlight")]
+    [SerializeField] private GameObject flashlight;
     
     [Header("Cam settings")]
     [SerializeField] private Transform playerCam;
@@ -46,6 +51,8 @@ public class PlayerController : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction interactAction;
+    private InputAction flashlightAction;
+    private InputAction runAction;
 
     #endregion
 
@@ -53,6 +60,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveInput;
     private Vector3 _moveDir;
     private float _currentSpeed;
+    private bool _isRunning;
     
     //player 1st person cam
     private Vector2 _lookInput;
@@ -66,8 +74,11 @@ public class PlayerController : MonoBehaviour
 
     //jump
     private bool _isjumping;
+
+    //flashlight
+    private bool _flashlightOn;
     
-    
+    private Animator anim;
     public PlayerInteraction _playerInteraction;
     
     #endregion
@@ -86,12 +97,15 @@ public class PlayerController : MonoBehaviour
         moveAction = inputActions.Player.Move;
         jumpAction = inputActions.Player.Jump;
         interactAction = inputActions.Player.Interact;
+        flashlightAction = inputActions.Player.FlashLight;
+        runAction = inputActions.Player.Sprint;
         
         cameraTarget = playerCam;
 
         _currentSpeed = walkSpeed;
         
         _playerInteraction = GetComponentInChildren<PlayerInteraction>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void OnEnable()
@@ -108,6 +122,11 @@ public class PlayerController : MonoBehaviour
         jumpAction.canceled += Jump;
 
         interactAction.performed += Interaction;
+        
+        flashlightAction.performed += Flashlight;
+        
+        runAction.performed += Run;
+        runAction.canceled += Run;
 
     }
 
@@ -122,6 +141,7 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         Gravity();
+        UpdateAnimator();
     }
     
     private void LateUpdate()
@@ -145,6 +165,10 @@ public class PlayerController : MonoBehaviour
         
         interactAction.performed -= Interaction;
         
+        flashlightAction.performed -= Flashlight;
+        
+        runAction.performed -= Run;
+        runAction.canceled -= Run;
 
     }
     
@@ -163,6 +187,13 @@ public class PlayerController : MonoBehaviour
        
     }
     
+    private void Run(InputAction.CallbackContext ctx)
+    {
+        _isRunning = !_isRunning;
+        
+        _currentSpeed = _isRunning ? runSpeed : walkSpeed;
+    }
+    
     private void Look(InputAction.CallbackContext ctx)
     {
         _lookInput = ctx.ReadValue<Vector2>();
@@ -174,6 +205,13 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
         }
+    }
+    
+    private void Flashlight(InputAction.CallbackContext ctx)
+    {
+        _flashlightOn = !_flashlightOn;
+        
+        flashlight.SetActive(_flashlightOn);
     }
     
     #endregion
@@ -204,7 +242,7 @@ public class PlayerController : MonoBehaviour
             _cameraRotation.x += _lookInput.y * cameraVerticalSpeed * deltaTimeMultiplier * (isInverted ? -1 : 1);
             _cameraRotation.y += _lookInput.x * cameraHorizontalSpeed * deltaTimeMultiplier;
             
-            _cameraRotation.y += _lookInput.x * cameraHorizontalSpeed * deltaTimeMultiplier;
+            //_cameraRotation.y += _lookInput.x * cameraHorizontalSpeed * deltaTimeMultiplier;
 
             _cameraRotation.x = Mathf.Clamp(_cameraRotation.x, verticalCameraRotationMin, verticalCameraRotationMax);
         }
@@ -225,8 +263,9 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        //time.deltatime causes it to be framerate dependend 
-        controller.Move(_moveDir * _currentSpeed * Time.deltaTime);
+        Vector3 finalMove = (_moveDir * _currentSpeed) + velocity;
+
+        controller.Move(finalMove * Time.deltaTime);
     }
     
     
@@ -250,7 +289,6 @@ public class PlayerController : MonoBehaviour
         }
         
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
     }
 
     public void Jumpscare()
@@ -283,5 +321,19 @@ public class PlayerController : MonoBehaviour
     
 
     #endregion
-    
+
+    #region Animation
+
+    private void UpdateAnimator()
+    {
+        Vector3 horizontalVelocity = controller.velocity;
+        horizontalVelocity.y = 0;
+
+        float speed = horizontalVelocity.magnitude;
+
+        anim.SetFloat(Hash_MovementValue, speed);
+    }
+
+    #endregion
 }
+
