@@ -48,6 +48,8 @@ public class NavMeshPatrol : MonoBehaviour
 
     [Tooltip("Show the a debug visualization for the waypoints.")]
     [SerializeField] private bool showWaypoints = true;
+    
+    
 
     #endregion
 
@@ -324,14 +326,7 @@ public class NavMeshPatrol : MonoBehaviour
         target = player;
         navMeshAgent.isStopped = false;
     }
-    /*
-    public void SetObjectTarget(Transform obj)
-    {
-        StopAllCoroutines();
-        target = obj;
-        navMeshAgent.isStopped = false;
-    }
-*/
+    
     public void StartChasing()
     {
         StartCoroutine(ChaseTimer());
@@ -341,23 +336,17 @@ public class NavMeshPatrol : MonoBehaviour
     IEnumerator ChaseTimer()
     {
         yield return new WaitForSeconds(chaserTimer);
-
+        
+        EdrickBehaviour.instance.isSpotted = false; //player is invisible again
 
         target = null;
         navMeshAgent.isStopped = false;
         yield return new WaitForSeconds(chaserTimer);
         navMeshAgent.isStopped = false;
+        navMeshAgent.stoppingDistance = 1f;
         SetNextWaypoint();
 
     }
-
-    //use when for killing the enemy to avoid error messages
-    public void StopChasing()
-    {
-        navMeshAgent.isStopped = true;
-        navMeshAgent.speed = 0f;
-    }
-    
 
     #endregion
 

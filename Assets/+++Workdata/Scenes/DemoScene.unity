@@ -569,7 +569,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 266294280}
         m_TargetAssemblyTypeName: EdrickBehaviour, Assembly-CSharp
-        m_MethodName: ChasePlayer
+        m_MethodName: TargetPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -796,9 +796,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 649509353}
   WalkSpeed: 3
-  RunSpeed: 8
+  RunSpeed: 7
   chasingDistance: 6
   walkDistance: 3
+  chasingStoppingDistance: 2
+  isSpotted: 0
 --- !u!1 &286900538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,7 +2017,7 @@ MonoBehaviour:
   controller: {fileID: 649509359}
   walkSpeed: 5
   runSpeed: 8
-  jumpForce: 5
+  jumpForce: 1
   gravity: -9.81
   jumpscare: {fileID: 256828844}
   flashlight: {fileID: 1500852318}

@@ -4,14 +4,8 @@ using UnityEngine.AI;
 
 public class EdrickBehaviour : MonoBehaviour
 {
-  /*
-   * behaviour: unnoticed, noticed, chasing
-   * unnoticed: player lost or cant see player
-   * noticed: heard or saw player
-   * chasing: player is running off -> edrick starts chasing
-   */
-
-
+    public static EdrickBehaviour instance;
+    
   [SerializeField] private Transform player;
   [SerializeField] private float WalkSpeed;
   [SerializeField] private float RunSpeed;
@@ -22,13 +16,18 @@ public class EdrickBehaviour : MonoBehaviour
   [SerializeField] private float walkDistance;
   
   
+  [SerializeField] private float chasingStoppingDistance;
+  
+  
   private NavMeshAgent agent;
   private NavMeshPatrol patrol;
   
-  private bool isSpotted;
+  public bool isSpotted;
 
   private void Awake()
   {
+      instance = this;
+      
       agent = GetComponent<NavMeshAgent>();
       patrol = GetComponent<NavMeshPatrol>();
   }
@@ -60,11 +59,16 @@ public class EdrickBehaviour : MonoBehaviour
       }
   }
 
-  public void ChasePlayer()
+  public void TargetPlayer()
   {
      patrol.SetPlayerTarget();
      isSpotted = true;
+
+     agent.stoppingDistance = chasingStoppingDistance;
   }
+  
+ 
+  
   
   
 }
