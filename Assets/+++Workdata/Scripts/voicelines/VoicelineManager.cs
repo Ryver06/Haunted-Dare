@@ -27,7 +27,8 @@ public class VoicelineManager : MonoBehaviour
     //das bleibt
     public void SetStoryline(string key)
     {
-        StoryLineOption foundOption = _storyLineOptions.Find(option => option.key == key);
+        //checks if the key matches with anything in the list
+        StoryLineOption foundOption = _storyLineOptions.Find(option => option.key == key); 
         if (foundOption == null)
             return; //TODO also log error!
         
