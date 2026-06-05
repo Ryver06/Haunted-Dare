@@ -490,9 +490,7 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 8716135404314190828, guid: 5061cc3584acb6747bdb3c0266e23391, type: 2}
     value: {fileID: 330585548}
-  - key: {fileID: -5043587163782600939, guid: 5061cc3584acb6747bdb3c0266e23391, type: 2}
-    value: {fileID: 1930875838}
-  - key: {fileID: 5227172703797270895, guid: 5061cc3584acb6747bdb3c0266e23391, type: 2}
+  - key: {fileID: -6874571730363128491, guid: 5061cc3584acb6747bdb3c0266e23391, type: 2}
     value: {fileID: 2082931053}
   m_ExposedReferences:
     m_References:
@@ -2603,7 +2601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1912235613400872, guid: 62932fb57e1adde41b35493d4720f61b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4307780730024298, guid: 62932fb57e1adde41b35493d4720f61b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2688,6 +2686,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11ca14197ebb914da74a68e6b7a06f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _storyLineOptions:
+  - key: intro
+    dialogStartText: 'Veronica: *Quack*'
+    fmodEventId: event:/Twst
   dialogueTxt: {fileID: 1467028887}
 --- !u!4 &1218150371
 Transform:
@@ -4238,14 +4240,14 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1218150370}
           m_TargetAssemblyTypeName: VoicelineManager, Assembly-CSharp
-          m_MethodName: PlayVoiceline
+          m_MethodName: SetStoryline
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: event:/Twst
+            m_StringArgument: intro
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!4 &2082931054
