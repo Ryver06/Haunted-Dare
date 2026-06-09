@@ -15,6 +15,7 @@ public class LockerManager : MonoBehaviour
     }
 
     [SerializeField] private Transform player;
+    [SerializeField] private Transform test;
     public List<LockerTimeline> timeline = new List<LockerTimeline>();
 
     public void checkId(int lockerId)
@@ -35,7 +36,13 @@ public class LockerManager : MonoBehaviour
     /// </summary>
     private void HideInLocker(int id)
     {
-        player = timeline[id].tp_pos;
+        
         timeline[id].cutscene.Play();
+        player.position = timeline[id].tp_pos.position;
+    }
+
+    public void Test()
+    {
+        player.position = test.position;
     }
 }
