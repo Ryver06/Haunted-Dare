@@ -6,17 +6,30 @@ using UnityEngine.Playables;
 
 public class LockerManager : MonoBehaviour
 {
+    
     [Serializable]
     public class LockerTimeline
     {
         public int id;
-        public PlayableDirector cutscene;
+        public PlayableDirector enterCutscene;
+        public PlayableDirector exitCutscene;
         public Transform tp_pos;
+        public Transform tp_exitPos;
     }
+    
+    public static LockerManager instance;
 
     [SerializeField] private Transform player;
-    [SerializeField] private Transform test;
+    [SerializeField] private Transform playerCam;
+    
     public List<LockerTimeline> timeline = new List<LockerTimeline>();
+
+    private int lastLockerId; 
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void checkId(int lockerId)
     {
@@ -36,13 +49,22 @@ public class LockerManager : MonoBehaviour
     /// </summary>
     private void HideInLocker(int id)
     {
+        PlayerController.instance.EnterLockerMode();
         
-        timeline[id].cutscene.Play();
+        timeline[id].enterCutscene.Play();
         player.position = timeline[id].tp_pos.position;
+        playerCam.rotation = timeline[id].tp_pos.rotation;
+        
+        lastLockerId = id; //save which locker player is currently in
+        
     }
 
-    public void Test()
+    public void ExitLocker()
     {
-        player.position = test.position;
+        timeline[lastLockerId].exitCutscene.Play();
+        player.position = timeline[lastLockerId].tp_exitPos.position;
+        playerCam.rotation = timeline[lastLockerId].tp_exitPos.rotation;
+        
     }
+    
 }

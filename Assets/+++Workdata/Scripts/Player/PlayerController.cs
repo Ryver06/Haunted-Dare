@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
     public static readonly int Hash_MovementValue = Animator.StringToHash("MovementValue");
 
     #region Inspector
@@ -78,6 +79,10 @@ public class PlayerController : MonoBehaviour
     //flashlight
     private bool _flashlightOn;
     
+    //locker
+    private bool _inLocker;
+    
+    //references
     private Animator anim;
     public PlayerInteraction _playerInteraction;
     
@@ -92,6 +97,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+        
         inputActions = new GameInput();
         lookAction = inputActions.Player.Look;
         moveAction = inputActions.Player.Move;
@@ -178,6 +185,12 @@ public class PlayerController : MonoBehaviour
     
     private void Interaction(InputAction.CallbackContext ctx)
     {
+        if (_inLocker)
+        {
+            ExitLockerMode();
+            return;
+        }
+        
         _playerInteraction.Interact();
     }
     
@@ -196,6 +209,7 @@ public class PlayerController : MonoBehaviour
     
     private void Look(InputAction.CallbackContext ctx)
     {
+        
         _lookInput = ctx.ReadValue<Vector2>();
     }
     
@@ -234,6 +248,15 @@ public class PlayerController : MonoBehaviour
     
     private void RotateCamera()
     {
+        if (_inLocker)
+        {
+           // playerCam.rotation = Quaternion.Euler(0f, 0f, 0f);
+            
+            //todo after a second, player can look around in a limited vision
+            
+            return;
+        }
+        
         if (_lookInput != Vector2.zero)
         {
             bool isMouseActive = CheckHardwareInput();
@@ -263,6 +286,8 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
+        if(_inLocker) return;
+        
         Vector3 finalMove = (_moveDir * _currentSpeed) + velocity;
 
         controller.Move(finalMove * Time.deltaTime);
@@ -332,6 +357,32 @@ public class PlayerController : MonoBehaviour
         float speed = horizontalVelocity.magnitude;
 
         anim.SetFloat(Hash_MovementValue, speed);
+    }
+
+    #endregion
+
+    #region Locker
+
+    public void EnterLockerMode()
+    {
+        _inLocker = true;
+    }
+    
+    public void ExitLockerMode()
+    {
+        LockerManager.instance.ExitLocker();
+        StartCoroutine(LockerRoutine());
+    }
+
+    private IEnumerator LockerRoutine()
+    {
+        yield return new WaitForSeconds(1.5f);
+        
+        /*
+        playerCam.rotation = Quaternion.Euler(0f, 0f, 0f);
+        yield return new WaitForSeconds(0.5f);
+        */
+        _inLocker = false;
     }
 
     #endregion
