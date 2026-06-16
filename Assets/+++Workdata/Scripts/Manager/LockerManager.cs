@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -39,7 +40,7 @@ public class LockerManager : MonoBehaviour
             //if match is found -> player Hides in locker
             if (timeline[i].id == lockerId)
             {
-                HideInLocker(i); //saves which object in the list it is
+               HideInLocker(i); //saves which object in the list it is
             }
         }
     }
@@ -54,6 +55,7 @@ public class LockerManager : MonoBehaviour
         timeline[id].enterCutscene.Play();
         player.position = timeline[id].tp_pos.position;
         playerCam.rotation = timeline[id].tp_pos.rotation;
+       // player.rotation =  timeline[id].tp_pos.rotation;
         
         lastLockerId = id; //save which locker player is currently in
         
@@ -63,8 +65,9 @@ public class LockerManager : MonoBehaviour
     {
         timeline[lastLockerId].exitCutscene.Play();
         player.position = timeline[lastLockerId].tp_exitPos.position;
+        player.rotation = timeline[lastLockerId].tp_exitPos.rotation;
         playerCam.rotation = timeline[lastLockerId].tp_exitPos.rotation;
-        
     }
-    
+
+   
 }

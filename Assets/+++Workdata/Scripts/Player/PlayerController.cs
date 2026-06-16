@@ -250,10 +250,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_inLocker)
         {
-           // playerCam.rotation = Quaternion.Euler(0f, 0f, 0f);
-            
-            //todo after a second, player can look around in a limited vision
-            
+            //this is causing a problem for when the player exits the locker
             return;
         }
         
@@ -376,13 +373,15 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator LockerRoutine()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         
-        /*
-        playerCam.rotation = Quaternion.Euler(0f, 0f, 0f);
-        yield return new WaitForSeconds(0.5f);
-        */
+        cameraTarget.rotation = Quaternion.Euler(0, 0, 0);
+        _cameraRotation.x = 0f;
+        _cameraRotation.y = 0f;
+        
         _inLocker = false;
+        
+        
     }
 
     #endregion
