@@ -113,7 +113,7 @@ namespace Synty.Tools.SyntyPropBoneTool
 
             if (editorDisabled)
             {
-                EditorGUILayout.LabelField("Open prefab in edit mode or create an instance in the scene to set up prop bones.");
+                EditorGUILayout.LabelField("Open prefab in edit mode or create an Instance in the scene to set up prop bones.");
             }
             EditorGUI.BeginDisabledGroup(editorDisabled);
             {
@@ -143,7 +143,7 @@ namespace Synty.Tools.SyntyPropBoneTool
                 GUILayout.Space(20);
                 if (editorDisabled)
                 {
-                    EditorGUILayout.LabelField("Open prefab in edit mode or create an instance in the scene to edit prop bones.");
+                    EditorGUILayout.LabelField("Open prefab in edit mode or create an Instance in the scene to edit prop bones.");
                 }
                 EditorGUI.BeginDisabledGroup(editorDisabled);
                 {
@@ -191,7 +191,7 @@ namespace Synty.Tools.SyntyPropBoneTool
                 {
                     if (PrefabUtility.IsPartOfPrefabAsset(Selection.objects[i]))
                     {
-                        Debug.LogWarning($"Cannot edit prefab asset {Selection.objects[i].name}. Open the asset in prefab edit mode or create a scene instance and try again.", Selection.objects[i]);
+                        Debug.LogWarning($"Cannot edit prefab asset {Selection.objects[i].name}. Open the asset in prefab edit mode or create a scene Instance and try again.", Selection.objects[i]);
                         continue;
                     }
 

@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController instance;
+    public static PlayerController Instance;
     public static readonly int Hash_MovementValue = Animator.StringToHash("MovementValue");
 
     #region Inspector
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     
     //player 1st person cam
     private Vector2 _lookInput;
-    private Vector2 _cameraRotation;
+    public Vector2 _cameraRotation;
     private Transform cameraTarget;
     private bool isInverted;
     
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
         
         inputActions = new GameInput();
         lookAction = inputActions.Player.Look;
@@ -250,7 +250,6 @@ public class PlayerController : MonoBehaviour
     {
         if (_inLocker)
         {
-            //this is causing a problem for when the player exits the locker
             return;
         }
         
@@ -276,6 +275,16 @@ public class PlayerController : MonoBehaviour
         if (lookAction.activeControl == null) return true;
 
         return lookAction.activeControl.device.name == "Mouse";
+
+    }
+
+    public void ExitLocker(Quaternion rot)
+    {
+        _cameraRotation.y -= 180;
+        cameraTarget.rotation = Quaternion.Euler(_cameraRotation.x, _cameraRotation.y, 0);
+        transform.rotation = Quaternion.Euler(0, _cameraRotation.y, 0); //turn player model same as cam but only on y Axis
+        
+        print(cameraTarget.eulerAngles);
 
     }
     
@@ -369,15 +378,18 @@ public class PlayerController : MonoBehaviour
     {
         LockerManager.instance.ExitLocker();
         StartCoroutine(LockerRoutine());
+        
+        
     }
 
     private IEnumerator LockerRoutine()
     {
-        yield return new WaitForSeconds(2f);
+        //cameraTarget.rotation = Quaternion.Euler(0, 0, 0);
+        //_cameraRotation.x = 0f;
+        //_cameraRotation.y = 0f;
         
-        cameraTarget.rotation = Quaternion.Euler(0, 0, 0);
-        _cameraRotation.x = 0f;
-        _cameraRotation.y = 0f;
+        
+        yield return new WaitForSeconds(2f);
         
         _inLocker = false;
         

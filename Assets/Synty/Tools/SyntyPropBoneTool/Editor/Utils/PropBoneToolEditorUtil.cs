@@ -84,7 +84,7 @@ namespace Synty.Tools.SyntyPropBoneTool
             {
                 if (IsPrefabAsset(binders[i]))
                 {
-                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene instance and try again.", binders[i].gameObject);
+                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene Instance and try again.", binders[i].gameObject);
                     continue;
                 }
 
@@ -175,7 +175,7 @@ namespace Synty.Tools.SyntyPropBoneTool
             {
                 if (IsPrefabAsset(binders[i]))
                 {
-                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene instance and try again.", binders[i].gameObject);
+                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene Instance and try again.", binders[i].gameObject);
                     continue;
                 }
 
@@ -239,7 +239,7 @@ namespace Synty.Tools.SyntyPropBoneTool
             {
                 if (IsPrefabAsset(binders[i]))
                 {
-                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene instance and try again.", binders[i].gameObject);
+                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene Instance and try again.", binders[i].gameObject);
                     continue;
                 }
 
@@ -278,7 +278,7 @@ namespace Synty.Tools.SyntyPropBoneTool
             {
                 if (IsPrefabAsset(binders[i]))
                 {
-                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene instance and try again.", binders[i].gameObject);
+                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene Instance and try again.", binders[i].gameObject);
                     continue;
                 }
 
@@ -300,7 +300,7 @@ namespace Synty.Tools.SyntyPropBoneTool
             {
                 if (IsPrefabAsset(binders[i]))
                 {
-                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene instance and try again.", binders[i].gameObject);
+                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene Instance and try again.", binders[i].gameObject);
                     continue;
                 }
 
@@ -322,7 +322,7 @@ namespace Synty.Tools.SyntyPropBoneTool
             {
                 if (IsPrefabAsset(binders[i]))
                 {
-                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene instance and try again.", binders[i].gameObject);
+                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene Instance and try again.", binders[i].gameObject);
                     continue;
                 }
 
@@ -344,7 +344,7 @@ namespace Synty.Tools.SyntyPropBoneTool
             {
                 if (IsPrefabAsset(binders[i]))
                 {
-                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene instance and try again.", binders[i].gameObject);
+                    Debug.LogWarning($"Cannot edit prefab asset {binders[i].gameObject.name}. Open the asset in prefab edit mode or create a scene Instance and try again.", binders[i].gameObject);
                     continue;
                 }
 

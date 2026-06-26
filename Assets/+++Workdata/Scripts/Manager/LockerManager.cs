@@ -50,7 +50,7 @@ public class LockerManager : MonoBehaviour
     /// </summary>
     private void HideInLocker(int id)
     {
-        PlayerController.instance.EnterLockerMode();
+        PlayerController.Instance.EnterLockerMode();
         
         timeline[id].enterCutscene.Play();
         player.position = timeline[id].tp_pos.position;
@@ -65,8 +65,9 @@ public class LockerManager : MonoBehaviour
     {
         timeline[lastLockerId].exitCutscene.Play();
         player.position = timeline[lastLockerId].tp_exitPos.position;
-        player.rotation = timeline[lastLockerId].tp_exitPos.rotation;
-        playerCam.rotation = timeline[lastLockerId].tp_exitPos.rotation;
+        //player.rotation = timeline[lastLockerId].tp_exitPos.rotation;
+        //playerCam.rotation = timeline[lastLockerId].tp_exitPos.rotation;
+        PlayerController.Instance.ExitLocker(timeline[lastLockerId].tp_exitPos.rotation);
     }
 
    
