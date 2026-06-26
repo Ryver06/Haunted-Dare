@@ -1214,11 +1214,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4722686431197676, guid: 19601ffa0fe21a0449b6f23a8be4675e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0039630164
+      value: -0.0039634705
       objectReference: {fileID: 0}
     - target: {fileID: 4722686431197676, guid: 19601ffa0fe21a0449b6f23a8be4675e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8683648
+      value: 0.86836505
       objectReference: {fileID: 0}
     - target: {fileID: 4722686431197676, guid: 19601ffa0fe21a0449b6f23a8be4675e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2068,7 +2068,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.000017414575, w: 1}
-  m_LocalPosition: {x: -14.2879715, y: 1.6, z: -2.7911532}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4114,7 +4114,7 @@ Transform:
   m_GameObject: {fileID: 649509351}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.2879715, y: 0, z: -2.7911532}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4184,6 +4184,7 @@ MonoBehaviour:
   controller: {fileID: 649509359}
   walkSpeed: 5
   runSpeed: 8
+  playerCollider: {fileID: 649509355}
   jumpForce: 1
   gravity: -9.81
   jumpscare: {fileID: 256828844}
@@ -4199,7 +4200,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _cameraRotation: {x: 0, y: 0}
-  _playerInteraction: {fileID: 0}
 --- !u!4 &655572256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4666519646979420, guid: 62932fb57e1adde41b35493d4720f61b, type: 3}

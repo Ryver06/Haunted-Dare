@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
     public static readonly int Hash_MovementValue = Animator.StringToHash("MovementValue");
+    public static readonly int Hash_IsCrouched = Animator.StringToHash("isCrouched");
 
     #region Inspector
 
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 8f;
+    [SerializeField] private CapsuleCollider playerCollider;
     
     [Header("Jump")]
     [SerializeField] private float jumpForce = 5f;
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
     private InputAction interactAction;
     private InputAction flashlightAction;
     private InputAction runAction;
+    private InputAction crouchAction;
 
     #endregion
 
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _moveDir;
     private float _currentSpeed;
     private bool _isRunning;
+    private bool _isCrouched;
     
     //player 1st person cam
     private Vector2 _lookInput;
@@ -84,7 +88,8 @@ public class PlayerController : MonoBehaviour
     
     //references
     private Animator anim;
-    public PlayerInteraction _playerInteraction;
+    private PlayerInteraction _playerInteraction;
+    
     
     #endregion
 
@@ -106,6 +111,7 @@ public class PlayerController : MonoBehaviour
         interactAction = inputActions.Player.Interact;
         flashlightAction = inputActions.Player.FlashLight;
         runAction = inputActions.Player.Sprint;
+        crouchAction = inputActions.Player.Crouch;
         
         cameraTarget = playerCam;
 
@@ -113,6 +119,7 @@ public class PlayerController : MonoBehaviour
         
         _playerInteraction = GetComponentInChildren<PlayerInteraction>();
         anim = GetComponentInChildren<Animator>();
+        
     }
 
     private void OnEnable()
@@ -134,6 +141,8 @@ public class PlayerController : MonoBehaviour
         
         runAction.performed += Run;
         runAction.canceled += Run;
+
+        crouchAction.performed += Crouch;
 
     }
 
@@ -176,6 +185,8 @@ public class PlayerController : MonoBehaviour
         
         runAction.performed -= Run;
         runAction.canceled -= Run;
+
+        crouchAction.performed -= Crouch;
 
     }
     
@@ -226,6 +237,11 @@ public class PlayerController : MonoBehaviour
         _flashlightOn = !_flashlightOn;
         
         flashlight.SetActive(_flashlightOn);
+    }
+    
+    private void Crouch(InputAction.CallbackContext ctx)
+    {
+        _isCrouched = !_isCrouched;
     }
     
     #endregion
@@ -363,6 +379,7 @@ public class PlayerController : MonoBehaviour
         float speed = horizontalVelocity.magnitude;
 
         anim.SetFloat(Hash_MovementValue, speed);
+        anim.SetBool(Hash_IsCrouched, _isCrouched);
     }
 
     #endregion
