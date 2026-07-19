@@ -51,7 +51,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 3938149524573279664}
   cacheVersion: 131856
-  cacheTime: 639138380055802518
+  cacheTime: 639147170554062212
   SerializableEventsDict:
   - key: event:/Twst
     index: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639138380055240820
+  lastModified: 639147170554060213
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -90,7 +90,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639138380055260943
+  lastModified: 639147170554061263
   FileSizes:
   - Name: Desktop
     Value: 818
@@ -110,7 +110,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639138380055802518
+  lastModified: 639147170554062212
   FileSizes:
   - Name: Desktop
     Value: 5056

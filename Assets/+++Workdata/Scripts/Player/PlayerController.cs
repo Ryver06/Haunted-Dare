@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,19 +17,27 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 8f;
-    [SerializeField] private CapsuleCollider playerCollider;
     
     [Header("Jump")]
     [SerializeField] private float jumpForce = 5f;
+    
+    [Header("Stamina")]
+    [SerializeField] private float maxStamina = 5f;
+    [SerializeField] private float stamina = 5f;
+    [SerializeField] private float staminaRegen = 1.6f;
+    [SerializeField] private float staminaDrain = 1.6f;
     
     [Header("Gravity")]
     [SerializeField] private float gravity = -9.81f;
     
     [Header("Jumpscare")]
-    [SerializeField] private GameObject jumpscare;
+    [SerializeField] private PlayableDirector jumpscare;
     
     [Header("Flashlight")]
     [SerializeField] private GameObject flashlight;
+    
+    [Header("UI")]
+    [SerializeField] private Image staminaBar_fixed;
     
     [Header("Cam settings")]
     [SerializeField] private Transform playerCam;
@@ -66,6 +76,7 @@ public class PlayerController : MonoBehaviour
     private float _currentSpeed;
     private bool _isRunning;
     private bool _isCrouched;
+    private bool _canRun;
     
     //player 1st person cam
     private Vector2 _lookInput;
@@ -120,6 +131,10 @@ public class PlayerController : MonoBehaviour
         _playerInteraction = GetComponentInChildren<PlayerInteraction>();
         anim = GetComponentInChildren<Animator>();
         
+        _isCrouched = false;
+        
+        stamina = maxStamina;
+       
     }
 
     private void OnEnable()
@@ -158,6 +173,7 @@ public class PlayerController : MonoBehaviour
         Movement();
         Gravity();
         UpdateAnimator();
+        UpdateStamina();
     }
     
     private void LateUpdate()
@@ -214,8 +230,11 @@ public class PlayerController : MonoBehaviour
     private void Run(InputAction.CallbackContext ctx)
     {
         _isRunning = !_isRunning;
-        
-        _currentSpeed = _isRunning ? runSpeed : walkSpeed;
+
+        if (_canRun)
+        {
+            _currentSpeed = _isRunning ? runSpeed : walkSpeed;  
+        }
     }
     
     private void Look(InputAction.CallbackContext ctx)
@@ -242,6 +261,17 @@ public class PlayerController : MonoBehaviour
     private void Crouch(InputAction.CallbackContext ctx)
     {
         _isCrouched = !_isCrouched;
+
+        if (_isCrouched)
+        {
+            controller.height = 0.9f;
+            controller.center = new Vector3(0, 0.45f, 0);
+        }
+        else if (!_isCrouched)
+        {
+            controller.height = 1.8f;
+            controller.center = new Vector3(0, 0.9f, 0);
+        }
     }
     
     #endregion
@@ -341,16 +371,17 @@ public class PlayerController : MonoBehaviour
     public void Jumpscare()
     {
         StartCoroutine(JumpscareRoutine());
+        jumpscare.Play();
     }
 
     private IEnumerator JumpscareRoutine()
     {
        DisableInput();
-       jumpscare.SetActive(true);
+       
        
        yield return new WaitForSeconds(2f);
        
-       jumpscare.SetActive(false);
+       
        EnabelInput(); //TODO replace with GameOver UI
     }
 
@@ -411,6 +442,73 @@ public class PlayerController : MonoBehaviour
         _inLocker = false;
         
         
+    }
+
+    #endregion
+
+    #region Stamina
+
+    //Drain Stamina instantly, instead of slowly
+    private void DrainStamina(int cost)
+    {
+        if (stamina >= 1)
+        {
+            stamina -= cost;
+        }
+    }
+
+    private void UpdateStamina()
+    {
+      
+        float targetFillAmount = (float)stamina / maxStamina;
+        staminaBar_fixed.fillAmount = targetFillAmount;
+      
+        //activates everything that you need stamina for
+        if (stamina >= 1)
+        {
+            _canRun = true;
+        }
+      
+      
+        //Regens Stamina
+        if (!_isRunning && _isGrounded)
+        {
+            if (stamina <= maxStamina - 0.01f)
+            {
+                stamina += staminaRegen * Time.deltaTime;
+
+                if (stamina >= maxStamina)
+                {
+                    stamina = maxStamina;
+                }
+            }
+        }
+
+       
+
+        //deactivating everything that you need stamina for
+        if (stamina <= 0)
+        {
+            stamina = 0;
+            _canRun = false;
+            _isRunning = false;
+            
+            /*
+             * cancels the input, so that when player holds sprint, while stamina runs out,
+             * and let's go after stamina regens, player doesn't sprint again
+             */
+            runAction.canceled += Run;
+            runAction.canceled -= Run;
+            
+            
+            _currentSpeed = walkSpeed;
+        }
+        
+        if (_isRunning)
+        {
+            stamina -= staminaDrain + Time.deltaTime;
+        }
+      
     }
 
     #endregion
