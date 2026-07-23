@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
@@ -37,10 +38,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject flashlight;
     
     [Header("UI")]
-    [SerializeField] private Image staminaBar_fixed;
+    [SerializeField] private List<Image> staminaBars;
     
     [Header("Cam settings")]
     [SerializeField] private Transform playerCam;
+    [SerializeField] private Transform camFollow;
     
     [SerializeField] private float verticalCameraRotationMin = -30f;
     [SerializeField] private float verticalCameraRotationMax = 70f;
@@ -266,11 +268,14 @@ public class PlayerController : MonoBehaviour
         {
             controller.height = 0.9f;
             controller.center = new Vector3(0, 0.45f, 0);
+            camFollow.localPosition = new Vector3(0, 1.15f, 0);
         }
         else if (!_isCrouched)
         {
             controller.height = 1.8f;
             controller.center = new Vector3(0, 0.9f, 0);
+            camFollow.localPosition = new Vector3(0, 1.6f, 0);
+
         }
     }
     
@@ -459,9 +464,12 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateStamina()
     {
-      
-        float targetFillAmount = (float)stamina / maxStamina;
-        staminaBar_fixed.fillAmount = targetFillAmount;
+        foreach (Image bar in staminaBars)
+        {
+            float targetFillAmount = (float)stamina / maxStamina;
+            bar.fillAmount = targetFillAmount;
+        }
+        
       
         //activates everything that you need stamina for
         if (stamina >= 1)
