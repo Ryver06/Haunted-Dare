@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        EnabelInput();
+        EnableInput();
 
         lookAction.performed += Look;
         lookAction.canceled += Look;
@@ -283,7 +283,7 @@ public class PlayerController : MonoBehaviour
 
     #region GameInput
 
-    public void EnabelInput()
+    public void EnableInput()
     {
         inputActions.Enable();
     }
@@ -387,7 +387,7 @@ public class PlayerController : MonoBehaviour
        yield return new WaitForSeconds(2f);
        
        
-       EnabelInput(); //TODO replace with GameOver UI
+       EnableInput(); //TODO replace with GameOver UI
     }
 
     #region Ground Check
