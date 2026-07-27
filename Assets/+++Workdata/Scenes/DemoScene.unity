@@ -1912,7 +1912,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 266294280}
         m_TargetAssemblyTypeName: EdrickBehaviour, Assembly-CSharp
-        m_MethodName: TargetPlayer
+        m_MethodName: CheckPlayerStatus
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1961,8 +1961,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 0.5, z: 6.40579}
-  m_Center: {x: 0, y: 0, z: 0.122895}
+  m_Size: {x: 2, y: 1.3524967, z: 6.40579}
+  m_Center: {x: 0, y: -0.42624825, z: 0.122895}
 --- !u!4 &141382280 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4561625937003564, guid: 62932fb57e1adde41b35493d4720f61b, type: 3}
@@ -2345,6 +2345,7 @@ MonoBehaviour:
   chasingDistance: 6
   walkDistance: 3
   chasingStoppingDistance: 1
+  spottingTimer: 1
   isSpotted: 0
 --- !u!4 &293064037 stripped
 Transform:
@@ -3896,9 +3897,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueSpeaker: {fileID: 618261040}
   dialogueText: {fileID: 1467028887}
-  continueButton: {fileID: 0}
-  choicesContainer: {fileID: 0}
-  choiceButtonPrefab: {fileID: 0}
 --- !u!1 &484413654
 GameObject:
   m_ObjectHideFlags: 0

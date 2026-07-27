@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 
+public enum PlayerHiddenState {Visible, Crouched, Hidden} //standing, crouched, in locker
+
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
@@ -72,6 +74,9 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    //states
+    private PlayerHiddenState playerHiddenState;
+    
     //movement
     private Vector2 _moveInput;
     private Vector3 _moveDir;
@@ -136,6 +141,8 @@ public class PlayerController : MonoBehaviour
         _isCrouched = false;
         
         stamina = maxStamina;
+        
+        playerHiddenState = PlayerHiddenState.Visible;
        
     }
 
@@ -269,12 +276,14 @@ public class PlayerController : MonoBehaviour
             controller.height = 0.9f;
             controller.center = new Vector3(0, 0.45f, 0);
             camFollow.localPosition = new Vector3(0, 1.15f, 0);
+            playerHiddenState = PlayerHiddenState.Crouched;
         }
         else if (!_isCrouched)
         {
             controller.height = 1.8f;
             controller.center = new Vector3(0, 0.9f, 0);
             camFollow.localPosition = new Vector3(0, 1.6f, 0);
+            playerHiddenState = PlayerHiddenState.Visible;
 
         }
     }
@@ -424,7 +433,10 @@ public class PlayerController : MonoBehaviour
 
     public void EnterLockerMode()
     {
+        crouchAction.performed += Crouch;
+        crouchAction.performed -= Crouch;
         _inLocker = true;
+        playerHiddenState = PlayerHiddenState.Hidden;
     }
     
     public void ExitLockerMode()
@@ -437,15 +449,10 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator LockerRoutine()
     {
-        //cameraTarget.rotation = Quaternion.Euler(0, 0, 0);
-        //_cameraRotation.x = 0f;
-        //_cameraRotation.y = 0f;
-        
-        
         yield return new WaitForSeconds(2f);
         
         _inLocker = false;
-        
+        playerHiddenState = PlayerHiddenState.Visible;
         
     }
 
@@ -520,5 +527,10 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+    
+    public int GetCurrentHiddenState ()
+    {
+        return (int)playerHiddenState;
+    }
 }
 
