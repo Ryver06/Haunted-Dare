@@ -1,7 +1,7 @@
 == Test ==
 
 = Test_Start
-This is a test#wait:3
+Veronica: This is a test#wait:1,5
 
-talk to me again#wait:2
+Veronica talk to me again#wait:2
 -> END

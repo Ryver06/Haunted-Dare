@@ -11,6 +11,8 @@ using UnityEngine.EventSystems;
 
 public class DialogueController : MonoBehaviour
 {
+    
+    
     private const string SpeakerSeparator = ":";
     private const string EscapedColon = "::";
     private const string EscapedColonPlaceholder = "§";
@@ -92,6 +94,7 @@ public class DialogueController : MonoBehaviour
     private void OpenDialogue()
     {
         dialogueBox.gameObject.SetActive(true);
+        UIManager.Instance.DisableForDialogUI();
     }
 
     private void CloseDialogue()
@@ -99,6 +102,7 @@ public class DialogueController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         dialogueBox.gameObject.SetActive(false);
         DialogueClosed?.Invoke();
+        UIManager.Instance.EnableForDialogUI();
     }
 
     private void ContinueDialogue()

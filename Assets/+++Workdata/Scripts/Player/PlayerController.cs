@@ -391,7 +391,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator JumpscareRoutine()
     {
        DisableInput();
-       
+       UIManager.Instance.DisableForDeathUI();
        
        yield return new WaitForSeconds(2f);
        

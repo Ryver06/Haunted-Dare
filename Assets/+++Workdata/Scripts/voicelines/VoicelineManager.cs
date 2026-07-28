@@ -4,63 +4,44 @@ using System.Collections.Generic;
 using FMODUnity;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class VoicelineManager : MonoBehaviour
 {
-    // in seperates script
     [Serializable]
     public class StoryLineOption
     {
         public string key;
         
-        //TODO maybe inky story text object?!
-        public string dialogStartText;
+        public string dialogPath;
         public string fmodEventId;
     }
 
+    [SerializeField] private InkDialogue inkDialogue;
     [SerializeField]
     private List<StoryLineOption> _storyLineOptions = new List<StoryLineOption>();
     
-    [SerializeField] private TMP_Text dialogueTxt;
+   
 
     
-    //das bleibt
+    /// <summary>
+    /// checks the list if any key matches and plays the appropiate fmod audio and ink dialog
+    /// </summary>
+    /// <param name="key"></param>
     public void SetStoryline(string key)
     {
         //checks if the key matches with anything in the list
         StoryLineOption foundOption = _storyLineOptions.Find(option => option.key == key); 
         if (foundOption == null)
-            return; //TODO also log error!
+            return; 
+
         
-        ReplaceSubtitles(foundOption.dialogStartText);
-        PlayVoiceline(foundOption.fmodEventId);
+        inkDialogue.StartDialogue(foundOption.dialogPath);
+        RuntimeManager.PlayOneShot(foundOption.fmodEventId);
     }
     
-    private void Awake()
-    {
-        dialogueTxt.text = "";
-    }
+   
 
-    /// <summary>
-    /// replaces the subtitles in the UI with new text
-    /// </summary>
-    public void ReplaceSubtitles(string text)
-    {
-        //use this method in the Timeline signals
-        dialogueTxt.text = text;
-        StartCoroutine(EmptyText());
-    }
-
-    public void PlayVoiceline(string path)
-    {
-        RuntimeManager.PlayOneShot(path);
-    }
-    
-    private IEnumerator EmptyText()
-    {
-        yield return new WaitForSeconds(3f);
-        dialogueTxt.text = "";
-    }
-    
+   
     
 }
