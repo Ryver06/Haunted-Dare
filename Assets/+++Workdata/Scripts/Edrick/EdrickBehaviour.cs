@@ -20,6 +20,11 @@ public class EdrickBehaviour : MonoBehaviour
   [SerializeField] private float chasingStoppingDistance;
   [SerializeField] private float spottingTimer;
   
+  [Header("Triggers")]
+  [SerializeField] private GameObject jumpscareTrigger;
+
+
+  [SerializeField] private Transform raycastPos;
   
   private NavMeshAgent agent;
   private NavMeshPatrol patrol;
@@ -33,11 +38,15 @@ public class EdrickBehaviour : MonoBehaviour
       
       agent = GetComponent<NavMeshAgent>();
       patrol = GetComponent<NavMeshPatrol>();
+      
+      jumpscareTrigger.SetActive(false);
   }
 
   private void Update()
   {
       UpdateEnemySpeed();
+      
+      
   }
 
   /// <summary>
@@ -96,8 +105,11 @@ public class EdrickBehaviour : MonoBehaviour
   
   private void TargetPlayer()
   {
-      //TODO shoot raycast to see if vision is blocked
+      //RaycastCheck();
+
+      if (!RaycastCheck()) return;
       
+      jumpscareTrigger.SetActive(true);
       patrol.SetPlayerTarget();
       isSpotted = true;
 
@@ -107,9 +119,11 @@ public class EdrickBehaviour : MonoBehaviour
 
   private IEnumerator SpottingTimer()
   {
-      //TODO Raycast Check
-      yield return new WaitForSeconds(spottingTimer);
-      TargetPlayer();
+      if (RaycastCheck())
+      {
+          yield return new WaitForSeconds(spottingTimer);
+          TargetPlayer(); 
+      }
   }
 
   private void DisableJumpscare()
@@ -124,11 +138,36 @@ public class EdrickBehaviour : MonoBehaviour
        */
   }
 
-  private void RaycastCheck()
+  private bool RaycastCheck()
   {
+      Debug.Log("RaycastCheck");
+      
+      if (isSpotted) return false;
+      
+      
       RaycastHit hit;
       
+      Vector3 direction = (player.position - transform.position).normalized;
+      
+      if (Physics.Raycast(raycastPos.position, direction,  out hit))
+      {
+          
+          Debug.Log("Hit " + hit.transform.name);
+          
+          if (hit.collider.CompareTag("Player"))
+          {
+              return true;
+          }
+      }
+      
+      return false;
+  }
+
+  public void HeardPlayer()
+  {
+      //if player is too loud, save the transform and make it the target
   }
   
+
   #endregion
 }

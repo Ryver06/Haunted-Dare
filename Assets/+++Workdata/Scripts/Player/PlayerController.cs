@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     
     [Header("UI")]
     [SerializeField] private List<Image> staminaBars;
+
+    [SerializeField] private GameObject gameOverUI;
     
     [Header("Cam settings")]
     [SerializeField] private Transform playerCam;
@@ -393,10 +395,10 @@ public class PlayerController : MonoBehaviour
        DisableInput();
        UIManager.Instance.DisableForDeathUI();
        
-       yield return new WaitForSeconds(2f);
+       yield return new WaitForSeconds(3.5f);
        
-       
-       EnableInput(); //TODO replace with GameOver UI
+       gameOverUI.SetActive(true);
+       Cursor.lockState = CursorLockMode.None;
     }
 
     #region Ground Check
