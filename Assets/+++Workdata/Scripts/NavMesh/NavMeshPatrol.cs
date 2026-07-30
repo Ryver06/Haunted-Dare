@@ -329,6 +329,8 @@ public class NavMeshPatrol : MonoBehaviour
     
     public void StartChasing()
     {
+        if (!EdrickBehaviour.instance.isSpotted) return;
+            
         StartCoroutine(ChaseTimer());
 
     }
@@ -339,11 +341,18 @@ public class NavMeshPatrol : MonoBehaviour
         
         EdrickBehaviour.instance.isSpotted = false; //player is invisible again
 
-        target = null;
+        target = transform;
         navMeshAgent.isStopped = false;
         yield return new WaitForSeconds(chaserTimer);
         navMeshAgent.isStopped = false;
         navMeshAgent.stoppingDistance = 1f;
+        EdrickBehaviour.instance.LoosePlayer();
+
+        
+        navMeshAgent.isStopped = true;
+        yield return new WaitForSeconds(chaserTimer);
+        navMeshAgent.isStopped = false;
+        target = null;
         SetNextWaypoint();
 
     }

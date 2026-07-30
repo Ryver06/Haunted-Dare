@@ -40,13 +40,12 @@ public class EdrickBehaviour : MonoBehaviour
       patrol = GetComponent<NavMeshPatrol>();
       
       jumpscareTrigger.SetActive(false);
+     
   }
 
   private void Update()
   {
       UpdateEnemySpeed();
-      
-      
   }
 
   /// <summary>
@@ -105,9 +104,8 @@ public class EdrickBehaviour : MonoBehaviour
   
   private void TargetPlayer()
   {
-      //RaycastCheck();
-
       if (!RaycastCheck()) return;
+      
       
       jumpscareTrigger.SetActive(true);
       patrol.SetPlayerTarget();
@@ -128,31 +126,37 @@ public class EdrickBehaviour : MonoBehaviour
 
   private void DisableJumpscare()
   {
-      /*
-       * wait a second
-       * disable jumpscare
-       * 
-       * wait a few seconds
-       * stop chasing
-       * 
-       */
+      if (isSpotted)
+      {
+          StartCoroutine(PlayerHidden());
+      }
+      else
+      {
+          jumpscareTrigger.SetActive(false); 
+      }
+  }
+
+  IEnumerator PlayerHidden()
+  {
+      yield return new WaitForSeconds(0.5f); //if player was already spotted, cant immeadiatly hide in locker and be immortal
+      jumpscareTrigger.SetActive(false);  //just in case
+      
+      yield return new WaitForSeconds(3f);
+      LoosePlayer();
   }
 
   private bool RaycastCheck()
   {
-      Debug.Log("RaycastCheck");
-      
-      if (isSpotted) return false;
-      
-      
       RaycastHit hit;
       
-      Vector3 direction = (player.position - transform.position).normalized;
+      Vector3 direction = (player.position + Vector3.up * 0.5f) - raycastPos.position;
+      direction.Normalize();
+
+      float distance = Vector3.Distance(raycastPos.position, player.position);
       
-      if (Physics.Raycast(raycastPos.position, direction,  out hit))
+      if (Physics.Raycast(raycastPos.position, direction,  out hit, distance))
       {
           
-          Debug.Log("Hit " + hit.transform.name);
           
           if (hit.collider.CompareTag("Player"))
           {
@@ -161,6 +165,24 @@ public class EdrickBehaviour : MonoBehaviour
       }
       
       return false;
+  }
+
+  /// <summary>
+  /// Raycasting only once often fails to hit something, so this is a backup
+  /// </summary>
+  public void CheckPlayerConstantly()
+  {
+      if (RaycastCheck() && PlayerController.Instance.GetCurrentHiddenState() == 0)
+      {
+          TargetPlayer();
+      }
+  }
+
+  public void LoosePlayer()
+  {
+     StopCoroutine(SpottingTimer());
+     isSpotted = false;
+     jumpscareTrigger.SetActive(false); 
   }
 
   public void HeardPlayer()
