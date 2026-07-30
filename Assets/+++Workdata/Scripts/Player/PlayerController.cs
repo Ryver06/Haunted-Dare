@@ -6,12 +6,14 @@ using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public enum PlayerHiddenState {Visible, Crouched, Hidden} //standing, crouched, in locker
-
+public enum PlayerState { Idle, Walking, Running, Sneaking}
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
     public static readonly int Hash_MovementValue = Animator.StringToHash("MovementValue");
     public static readonly int Hash_IsCrouched = Animator.StringToHash("isCrouched");
+    public static readonly int Hash_Jump = Animator.StringToHash("Jump");
+    public static readonly int Hash_isGrounded = Animator.StringToHash("isGrounded");
 
     #region Inspector
 
@@ -78,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
     //states
     private PlayerHiddenState playerHiddenState;
+    public PlayerState playerState;
     
     //movement
     private Vector2 _moveInput;
@@ -259,6 +262,7 @@ public class PlayerController : MonoBehaviour
         if (_isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            anim.SetTrigger(Hash_Jump);
         }
     }
     
@@ -282,8 +286,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (!_isCrouched)
         {
-            controller.height = 1.8f;
-            controller.center = new Vector3(0, 0.9f, 0);
+            controller.height = 1.7f;
+            controller.center = new Vector3(0, 0.925f, 0);
             camFollow.localPosition = new Vector3(0, 1.6f, 0);
             playerHiddenState = PlayerHiddenState.Visible;
 
@@ -359,6 +363,15 @@ public class PlayerController : MonoBehaviour
         Vector3 finalMove = (_moveDir * _currentSpeed) + velocity;
 
         controller.Move(finalMove * Time.deltaTime);
+        
+        if (_moveInput == Vector2.zero)
+        {
+            playerState = PlayerState.Idle;
+        }
+        else
+        {
+            playerState = PlayerState.Walking;
+        }
     }
     
     
@@ -427,6 +440,7 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat(Hash_MovementValue, speed);
         anim.SetBool(Hash_IsCrouched, _isCrouched);
+        anim.SetBool(Hash_isGrounded, _isGrounded);
     }
 
     #endregion
@@ -533,6 +547,11 @@ public class PlayerController : MonoBehaviour
     public int GetCurrentHiddenState ()
     {
         return (int)playerHiddenState;
+    }
+    
+    public int GetCurrentState ()
+    {
+        return (int)playerState;
     }
 }
 

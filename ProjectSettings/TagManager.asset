@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Interactable
   - Locker
+  - Grass
+  - Wood
+  - Stone
+  - Gravel
+  - Carpet
+  - FootTrigger
   layers:
   - Default
   - TransparentFX
