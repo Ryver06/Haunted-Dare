@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EdrickBehaviour : MonoBehaviour
 {
-    public static EdrickBehaviour instance;
+    public static EdrickBehaviour Instance;
     
   [SerializeField] private Transform player;
   [SerializeField] private float WalkSpeed;
@@ -29,12 +28,15 @@ public class EdrickBehaviour : MonoBehaviour
   private NavMeshAgent agent;
   private NavMeshPatrol patrol;
   
+  //noise
+  public Transform noiseTarget;
+  
   
   public bool isSpotted;
 
   private void Awake()
   {
-      instance = this;
+      Instance = this;
       
       agent = GetComponent<NavMeshAgent>();
       patrol = GetComponent<NavMeshPatrol>();
@@ -187,7 +189,11 @@ public class EdrickBehaviour : MonoBehaviour
 
   public void HeardPlayer()
   {
-      //if player is too loud, save the transform and make it the target
+      Vector3 pos =  player.position;
+      noiseTarget.position = pos;
+      
+     patrol.SetTarget(noiseTarget);
+     
   }
   
 

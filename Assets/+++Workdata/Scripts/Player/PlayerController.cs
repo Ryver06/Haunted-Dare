@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
     private bool _isRunning;
     private bool _isCrouched;
     private bool _canRun;
+    private bool _sprintHeld;
     
     //player 1st person cam
     private Vector2 _lookInput;
@@ -243,12 +244,20 @@ public class PlayerController : MonoBehaviour
     
     private void Run(InputAction.CallbackContext ctx)
     {
-        _isRunning = !_isRunning;
-
-        if (_canRun)
+        if (ctx.performed)
         {
-            _currentSpeed = _isRunning ? runSpeed : walkSpeed;  
+            if (_canRun)
+                _isRunning = true;
+            _sprintHeld = true;
         }
+
+        if (ctx.canceled)
+        {
+            _isRunning = false;
+            _sprintHeld = false;
+        }
+
+        _currentSpeed = _isRunning ? runSpeed : walkSpeed;
     }
     
     private void Look(InputAction.CallbackContext ctx)
@@ -259,7 +268,7 @@ public class PlayerController : MonoBehaviour
     
     private void Jump(InputAction.CallbackContext ctx)
     {
-        if (_isGrounded)
+        if (_isGrounded) //&& canJump
         {
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
             anim.SetTrigger(Hash_Jump);
@@ -279,13 +288,20 @@ public class PlayerController : MonoBehaviour
 
         if (_isCrouched)
         {
+            _canRun = false;
+            //can jump = false
+            //currentspeed = crouchspeed
+            
             controller.height = 0.9f;
             controller.center = new Vector3(0, 0.45f, 0);
             camFollow.localPosition = new Vector3(0, 1.15f, 0);
             playerHiddenState = PlayerHiddenState.Crouched;
+            playerState = PlayerState.Sneaking;
         }
         else if (!_isCrouched)
         {
+            _canRun = true;
+            
             controller.height = 1.7f;
             controller.center = new Vector3(0, 0.925f, 0);
             camFollow.localPosition = new Vector3(0, 1.6f, 0);
@@ -364,14 +380,21 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(finalMove * Time.deltaTime);
         
-        if (_moveInput == Vector2.zero)
+        if (_moveInput == Vector2.zero && !_isCrouched)
         {
             playerState = PlayerState.Idle;
         }
-        else
+        else if (!_isRunning && !_isCrouched && _moveInput != Vector2.zero) //no running, no crouching but moving
         {
             playerState = PlayerState.Walking;
         }
+
+        if (_isRunning)
+        {
+            playerState = PlayerState.Running;
+        }
+        
+        _currentSpeed = _isRunning ? runSpeed : walkSpeed;
     }
     
     
@@ -479,7 +502,7 @@ public class PlayerController : MonoBehaviour
     //Drain Stamina instantly, instead of slowly
     private void DrainStamina(int cost)
     {
-        if (stamina >= 1)
+        if (stamina >= 1 )
         {
             stamina -= cost;
         }
@@ -524,18 +547,12 @@ public class PlayerController : MonoBehaviour
             _canRun = false;
             _isRunning = false;
             
-            /*
-             * cancels the input, so that when player holds sprint, while stamina runs out,
-             * and let's go after stamina regens, player doesn't sprint again
-             */
-            runAction.canceled += Run;
-            runAction.canceled -= Run;
-            
             
             _currentSpeed = walkSpeed;
         }
         
-        if (_isRunning)
+        //drain stamina slowly
+        if (_isRunning && _moveInput != Vector2.zero)
         {
             stamina -= staminaDrain + Time.deltaTime;
         }

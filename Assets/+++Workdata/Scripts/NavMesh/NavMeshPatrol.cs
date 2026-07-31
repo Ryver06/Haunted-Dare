@@ -67,6 +67,9 @@ public class NavMeshPatrol : MonoBehaviour
     private bool isWaiting;
     private bool isInActionArea;
     
+    //noiseMeter
+    private bool noiseTarget;
+    private bool coroutineRunning;
     
     #region Unity Event Functions
 
@@ -113,6 +116,13 @@ public class NavMeshPatrol : MonoBehaviour
 
         currentSpeed = navMeshAgent.velocity;
 
+        
+        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance && noiseTarget)
+        {
+            Debug.Log("noise target reached");
+            
+            StartCoroutine(Wait());
+        }
     }
 
     private void FixedUpdate()
@@ -329,7 +339,7 @@ public class NavMeshPatrol : MonoBehaviour
     
     public void StartChasing()
     {
-        if (!EdrickBehaviour.instance.isSpotted) return;
+        if (!EdrickBehaviour.Instance.isSpotted) return;
             
         StartCoroutine(ChaseTimer());
 
@@ -339,14 +349,14 @@ public class NavMeshPatrol : MonoBehaviour
     {
         yield return new WaitForSeconds(chaserTimer);
         
-        EdrickBehaviour.instance.isSpotted = false; //player is invisible again
+        EdrickBehaviour.Instance.isSpotted = false; //player is invisible again
 
         target = transform;
         navMeshAgent.isStopped = false;
         yield return new WaitForSeconds(chaserTimer);
         navMeshAgent.isStopped = false;
         navMeshAgent.stoppingDistance = 1f;
-        EdrickBehaviour.instance.LoosePlayer();
+        EdrickBehaviour.Instance.LoosePlayer();
 
         
         navMeshAgent.isStopped = true;
@@ -355,6 +365,36 @@ public class NavMeshPatrol : MonoBehaviour
         target = null;
         SetNextWaypoint();
 
+    }
+
+    public void SetTarget(Transform target)
+    {
+        this.target = target;
+
+        noiseTarget = true;
+
+      
+    }
+
+    IEnumerator Wait()
+    {
+        Debug.Log("Waiting...");
+        
+        if (coroutineRunning) yield break;
+        
+        coroutineRunning = true;
+        noiseTarget = false;
+        
+        navMeshAgent.isStopped = true;
+        yield return new WaitForSeconds(3);
+        target = null;
+        navMeshAgent.isStopped = false;
+        
+        SetNextWaypoint();
+        
+        coroutineRunning = false;
+        
+        yield return null;
     }
 
     #endregion
