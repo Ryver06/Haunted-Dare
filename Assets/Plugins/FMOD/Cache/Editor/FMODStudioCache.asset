@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6722553007914153203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Edrick/Jumpscare
+  m_EditorClassIdentifier: 
+  Path: event:/Edrick/Jumpscare
+  Guid:
+    Data1: 1704567638
+    Data2: 1197820128
+    Data3: 954210234
+    Data4: -474326158
+  Banks:
+  - {fileID: 1652699864443148110}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5977
 --- !u!114 &-3593827380327415898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,18 +157,22 @@ MonoBehaviour:
   - {fileID: 1615407356134009509}
   - {fileID: 8359339455592431993}
   - {fileID: 3991297320497890613}
+  - {fileID: 4326455390376795694}
+  - {fileID: 1652699864443148110}
   EditorEvents:
   - {fileID: -2135530717600276420}
   - {fileID: 3145855346713565172}
   - {fileID: -65087068196009091}
   - {fileID: 5583693712055332243}
+  - {fileID: 7878241504501394544}
+  - {fileID: -6722553007914153203}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1615407356134009509}
   StringsBanks:
   - {fileID: 3938149524573279664}
   cacheVersion: 131856
-  cacheTime: 639208239806687119
+  cacheTime: 639211906763166450
   SerializableEventsDict:
   - key: event:/Twst
     index: 0
@@ -151,6 +182,10 @@ MonoBehaviour:
     index: 2
   - key: event:/Player/Player_Jump
     index: 3
+  - key: event:/Objects/Locker
+    index: 4
+  - key: event:/Edrick/Jumpscare
+    index: 5
 --- !u!114 &1615407356134009509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,10 +201,30 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639207756925182945
+  lastModified: 639211906758769277
   FileSizes:
   - Name: Desktop
     Value: 1074
+  Exists: 1
+--- !u!114 &1652699864443148110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Edrick.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/Haunted Dare/Build/Desktop/Edrick.bank
+  Name: Edrick
+  StudioPath: bank:/Edrick
+  lastModified: 639211906763166450
+  FileSizes:
+  - Name: Desktop
+    Value: 228896
   Exists: 1
 --- !u!114 &2284239590520472391
 MonoBehaviour:
@@ -243,10 +298,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639207756925199903
+  lastModified: 639211906758789290
   FileSizes:
   - Name: Desktop
-    Value: 1052
+    Value: 1220
   Exists: 1
 --- !u!114 &3991297320497890613
 MonoBehaviour:
@@ -267,6 +322,26 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 374528
+  Exists: 1
+--- !u!114 &4326455390376795694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Objects.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/Haunted Dare/Build/Desktop/Objects.bank
+  Name: Objects
+  StudioPath: bank:/Objects
+  lastModified: 639211896838723824
+  FileSizes:
+  - Name: Desktop
+    Value: 83616
   Exists: 1
 --- !u!114 &5583693712055332243
 MonoBehaviour:
@@ -296,6 +371,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &7878241504501394544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/Locker
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/Locker
+  Guid:
+    Data1: -1099139620
+    Data2: 1124571202
+    Data3: -692469106
+    Data4: -1515959419
+  Banks:
+  - {fileID: 4326455390376795694}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2049
 --- !u!114 &8359339455592431993
 MonoBehaviour:
   m_ObjectHideFlags: 0

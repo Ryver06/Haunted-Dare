@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
@@ -424,6 +425,7 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(JumpscareRoutine());
         jumpscare.Play();
+        RuntimeManager.PlayOneShot("event:/Edrick/Jumpscare");
     }
 
     private IEnumerator JumpscareRoutine()
@@ -431,7 +433,7 @@ public class PlayerController : MonoBehaviour
        DisableInput();
        UIManager.Instance.DisableForDeathUI();
        
-       yield return new WaitForSeconds(3.5f);
+       yield return new WaitForSeconds(2.5f);
        
        gameOverUI.SetActive(true);
        Cursor.lockState = CursorLockMode.None;

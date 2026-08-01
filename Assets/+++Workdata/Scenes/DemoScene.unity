@@ -4933,6 +4933,7 @@ GameObject:
   - component: {fileID: 505029401}
   - component: {fileID: 505029400}
   - component: {fileID: 505029403}
+  - component: {fileID: 505029404}
   m_Layer: 0
   m_Name: LockerDoor
   m_TagString: Untagged
@@ -5030,6 +5031,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &505029404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505029399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356d1fdbef430244b9aa49782e5b621c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &520550969
 GameObject:
   m_ObjectHideFlags: 0
@@ -12560,6 +12573,7 @@ GameObject:
   - component: {fileID: 2127676443}
   - component: {fileID: 2127676442}
   - component: {fileID: 2127676445}
+  - component: {fileID: 2127676446}
   m_Layer: 0
   m_Name: LockerDoor
   m_TagString: Untagged
@@ -12657,6 +12671,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2127676446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127676441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356d1fdbef430244b9aa49782e5b621c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2133766374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4510557871953792, guid: 62932fb57e1adde41b35493d4720f61b, type: 3}
@@ -12742,6 +12768,7 @@ GameObject:
   - component: {fileID: 583910395022881620}
   - component: {fileID: 6868624022953149193}
   - component: {fileID: 8203120073646440377}
+  - component: {fileID: 8203120073646440378}
   m_Layer: 0
   m_Name: LockerDoor
   m_TagString: Untagged
@@ -12970,6 +12997,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8203120073646440378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5317538380189475397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356d1fdbef430244b9aa49782e5b621c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

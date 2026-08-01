@@ -466,7 +466,7 @@ MonoBehaviour:
   sourceProjectPath: Assets/FMOD/Haunted Dare/Haunted Dare.fspro
   sourceBankPath: Assets/FMOD/Haunted Dare/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0
@@ -489,6 +489,8 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Edrick
+  - Objects
   - Player
   - Voicelines
   BanksToLoad: []
