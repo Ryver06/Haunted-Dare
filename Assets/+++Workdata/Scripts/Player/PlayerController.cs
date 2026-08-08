@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 8f;
+    [SerializeField] private float crouchSpeed = 3f;
     
     [Header("Jump")]
     [SerializeField] private float jumpForce = 5f;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     
     [Header("Jumpscare")]
     [SerializeField] private PlayableDirector jumpscare;
+    [SerializeField] private float jumpscareTimer;
     
     [Header("Flashlight")]
     [SerializeField] private GameObject flashlight;
@@ -76,6 +78,7 @@ public class PlayerController : MonoBehaviour
     private InputAction flashlightAction;
     private InputAction runAction;
     private InputAction crouchAction;
+    private InputAction pauseAction;
 
     #endregion
 
@@ -90,6 +93,7 @@ public class PlayerController : MonoBehaviour
     private bool _isRunning;
     private bool _isCrouched;
     private bool _canRun;
+    private bool _canJump;
     private bool _sprintHeld;
     
     //player 1st person cam
@@ -115,6 +119,9 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private PlayerInteraction _playerInteraction;
     
+    //UI
+    private bool _canPause;
+    
     
     #endregion
 
@@ -137,6 +144,7 @@ public class PlayerController : MonoBehaviour
         flashlightAction = inputActions.Player.FlashLight;
         runAction = inputActions.Player.Sprint;
         crouchAction = inputActions.Player.Crouch;
+        pauseAction = inputActions.Player.Pause;
         
         cameraTarget = playerCam;
 
@@ -146,6 +154,8 @@ public class PlayerController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         
         _isCrouched = false;
+        _canJump = true;
+        _canPause = true;
         
         stamina = maxStamina;
         
@@ -174,6 +184,8 @@ public class PlayerController : MonoBehaviour
         runAction.canceled += Run;
 
         crouchAction.performed += Crouch;
+
+        pauseAction.performed += Pause;
 
     }
 
@@ -220,6 +232,7 @@ public class PlayerController : MonoBehaviour
 
         crouchAction.performed -= Crouch;
 
+        pauseAction.performed -= Pause;
     }
     
     #endregion
@@ -247,7 +260,7 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.performed)
         {
-            if (_canRun)
+            if (_canRun && !_isCrouched)
                 _isRunning = true;
             _sprintHeld = true;
         }
@@ -269,7 +282,7 @@ public class PlayerController : MonoBehaviour
     
     private void Jump(InputAction.CallbackContext ctx)
     {
-        if (_isGrounded) //&& canJump
+        if (_isGrounded && _canJump)
         {
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
             anim.SetTrigger(Hash_Jump);
@@ -285,32 +298,57 @@ public class PlayerController : MonoBehaviour
     
     private void Crouch(InputAction.CallbackContext ctx)
     {
+        if(_inLocker) return;
+        
         _isCrouched = !_isCrouched;
 
         if (_isCrouched)
         {
-            _canRun = false;
-            //can jump = false
-            //currentspeed = crouchspeed
-            
-            controller.height = 0.9f;
-            controller.center = new Vector3(0, 0.45f, 0);
-            camFollow.localPosition = new Vector3(0, 1.15f, 0);
-            playerHiddenState = PlayerHiddenState.Crouched;
-            playerState = PlayerState.Sneaking;
+          Crouching();  
         }
         else if (!_isCrouched)
         {
-            _canRun = true;
-            
-            controller.height = 1.7f;
-            controller.center = new Vector3(0, 0.925f, 0);
-            camFollow.localPosition = new Vector3(0, 1.6f, 0);
-            playerHiddenState = PlayerHiddenState.Visible;
-
+            Uncrouching();
         }
     }
+
+    private void Pause(InputAction.CallbackContext ctx)
+    {
+        if (!_canPause) return;
+        
+        PauseManager.Instance.Pause();
+        Cursor.lockState = CursorLockMode.None;
+    }
     
+    #endregion
+
+    #region Crouch
+
+    private void Crouching()
+    {
+        _canRun = false;
+        _canJump = false;
+        _currentSpeed = crouchSpeed;
+            
+        controller.height = 0.9f;
+        controller.center = new Vector3(0, 0.45f, 0);
+        camFollow.localPosition = new Vector3(0, 1.15f, 0);
+        playerHiddenState = PlayerHiddenState.Crouched;
+        playerState = PlayerState.Sneaking;
+    }
+
+    private void Uncrouching()
+    {
+        _canRun = true;
+        _canJump = true;
+        _currentSpeed = walkSpeed;
+            
+        controller.height = 1.7f;
+        controller.center = new Vector3(0, 0.925f, 0);
+        camFollow.localPosition = new Vector3(0, 1.6f, 0);
+        playerHiddenState = PlayerHiddenState.Visible;
+    }
+
     #endregion
 
     #region GameInput
@@ -430,12 +468,16 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator JumpscareRoutine()
     {
+        _canPause = false;
+        
        DisableInput();
        UIManager.Instance.DisableForDeathUI();
        
-       yield return new WaitForSeconds(2.5f);
+       yield return new WaitForSeconds(jumpscareTimer);
        
        gameOverUI.SetActive(true);
+       
+       yield return new WaitForSeconds(2f);
        Cursor.lockState = CursorLockMode.None;
     }
 
@@ -474,9 +516,10 @@ public class PlayerController : MonoBehaviour
 
     public void EnterLockerMode()
     {
-        crouchAction.performed += Crouch;
-        crouchAction.performed -= Crouch;
+        Uncrouching();
+        _isCrouched = false;
         _inLocker = true;
+        _canJump = false;
         playerHiddenState = PlayerHiddenState.Hidden;
     }
     
@@ -493,6 +536,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         
         _inLocker = false;
+        _canJump = true;
         playerHiddenState = PlayerHiddenState.Visible;
         
     }
