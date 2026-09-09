@@ -56,6 +56,33 @@ MonoBehaviour:
   - Gravel
   - Carpet
   Exists: 1
+--- !u!114 &-2844774609685180185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Enviroment/MainMenu
+  m_EditorClassIdentifier: 
+  Path: event:/Enviroment/MainMenu
+  Guid:
+    Data1: -211051544
+    Data2: 1094485558
+    Data3: 87385516
+    Data4: 1662498694
+  Banks:
+  - {fileID: -1964125617744943051}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 55000
 --- !u!114 &-2135530717600276420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +110,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3844
+--- !u!114 &-1964125617744943051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambient.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/Haunted Dare/Build/Desktop/Ambient.bank
+  Name: Ambient
+  StudioPath: bank:/Ambient
+  lastModified: 639244829116953705
+  FileSizes:
+  - Name: Desktop
+    Value: 1754144
+  Exists: 1
 --- !u!114 &-65087068196009091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +206,8 @@ MonoBehaviour:
   - {fileID: 3991297320497890613}
   - {fileID: 4326455390376795694}
   - {fileID: 1652699864443148110}
+  - {fileID: 590011514357697239}
+  - {fileID: -1964125617744943051}
   EditorEvents:
   - {fileID: -2135530717600276420}
   - {fileID: 3145855346713565172}
@@ -166,13 +215,15 @@ MonoBehaviour:
   - {fileID: 5583693712055332243}
   - {fileID: 7878241504501394544}
   - {fileID: -6722553007914153203}
+  - {fileID: 3127458163887256627}
+  - {fileID: -2844774609685180185}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1615407356134009509}
   StringsBanks:
   - {fileID: 3938149524573279664}
   cacheVersion: 131856
-  cacheTime: 639215457159615873
+  cacheTime: 639244829116953705
   SerializableEventsDict:
   - key: event:/Twst
     index: 0
@@ -186,6 +237,30 @@ MonoBehaviour:
     index: 4
   - key: event:/Edrick/Jumpscare
     index: 5
+  - key: event:/Music/MainMenu
+    index: 6
+  - key: event:/Enviroment/MainMenu
+    index: 7
+--- !u!114 &590011514357697239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/Haunted Dare/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 639244829116369389
+  FileSizes:
+  - Name: Desktop
+    Value: 733408
+  Exists: 1
 --- !u!114 &1615407356134009509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +276,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639211906758769277
+  lastModified: 639244821264900818
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -255,6 +330,33 @@ MonoBehaviour:
   - Gravel
   - Carpet
   Exists: 1
+--- !u!114 &3127458163887256627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/MainMenu
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MainMenu
+  Guid:
+    Data1: 887103397
+    Data2: 1175601565
+    Data3: 459837324
+    Data4: -1994483802
+  Banks:
+  - {fileID: 590011514357697239}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 62156
 --- !u!114 &3145855346713565172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,10 +400,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639211906758789290
+  lastModified: 639244821264920821
   FileSizes:
   - Name: Desktop
-    Value: 1220
+    Value: 1410
   Exists: 1
 --- !u!114 &3991297320497890613
 MonoBehaviour:
@@ -413,7 +515,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639208239806687119
+  lastModified: 639244817946877990
   FileSizes:
   - Name: Desktop
     Value: 45696

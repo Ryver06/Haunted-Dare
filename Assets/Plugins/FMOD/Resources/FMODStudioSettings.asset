@@ -489,7 +489,9 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Ambient
   - Edrick
+  - Music
   - Objects
   - Player
   - Voicelines
