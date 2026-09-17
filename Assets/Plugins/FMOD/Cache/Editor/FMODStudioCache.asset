@@ -125,7 +125,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Ambient.bank
   Name: Ambient
   StudioPath: bank:/Ambient
-  lastModified: 639244829116953705
+  lastModified: 639248496875863794
   FileSizes:
   - Name: Desktop
     Value: 1754144
@@ -223,7 +223,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 3938149524573279664}
   cacheVersion: 131856
-  cacheTime: 639244829116953705
+  cacheTime: 639248496876063843
   SerializableEventsDict:
   - key: event:/Twst
     index: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639244829116369389
+  lastModified: 639248496875983823
   FileSizes:
   - Name: Desktop
     Value: 733408
@@ -276,7 +276,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639244821264900818
+  lastModified: 639248496875903803
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -296,7 +296,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Edrick.bank
   Name: Edrick
   StudioPath: bank:/Edrick
-  lastModified: 639211906763166450
+  lastModified: 639248496875883798
   FileSizes:
   - Name: Desktop
     Value: 228896
@@ -400,7 +400,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639244821264920821
+  lastModified: 639248496875913806
   FileSizes:
   - Name: Desktop
     Value: 1410
@@ -420,7 +420,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 639207756929144643
+  lastModified: 639248496876043831
   FileSizes:
   - Name: Desktop
     Value: 374528
@@ -440,7 +440,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Objects.bank
   Name: Objects
   StudioPath: bank:/Objects
-  lastModified: 639215457159615873
+  lastModified: 639248496876003826
   FileSizes:
   - Name: Desktop
     Value: 83520
@@ -515,7 +515,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639244817946877990
+  lastModified: 639248496876063843
   FileSizes:
   - Name: Desktop
     Value: 45696
