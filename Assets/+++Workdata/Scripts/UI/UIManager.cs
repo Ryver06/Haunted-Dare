@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     
     [Header("UI Lists")]
     [SerializeField] private List<GameObject> dialogUIList; // gameobjects that need to be turned off when in dialog
+    [SerializeField] private List<GameObject> dialogEnableUIList; // gameobjects that need to be turned off when in dialog
     [SerializeField] private List<GameObject> deathUIList; // gameobjects that need to be turned off when dead
 
     private void Awake()
@@ -40,7 +41,7 @@ public class UIManager : MonoBehaviour
     
     public void EnableForDialogUI()
     {
-       EnableUI(dialogUIList);
+       EnableUI(dialogEnableUIList);
     }
     
     public void DisableForDeathUI()

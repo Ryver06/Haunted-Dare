@@ -12,6 +12,7 @@ TagManager:
   - Gravel
   - Carpet
   - FootTrigger
+  - NPC
   layers:
   - Default
   - TransparentFX

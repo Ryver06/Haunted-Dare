@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5977
+--- !u!114 &-4784512763423145740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/FlashLight
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/FlashLight
+  Guid:
+    Data1: -1242950026
+    Data2: 1283004519
+    Data3: -1154908773
+    Data4: -2135062573
+  Banks:
+  - {fileID: 3991297320497890613}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 350
 --- !u!114 &-3593827380327415898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,11 +152,65 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Ambient.bank
   Name: Ambient
   StudioPath: bank:/Ambient
-  lastModified: 639248496875863794
+  lastModified: 639254193485277419
   FileSizes:
   - Name: Desktop
     Value: 1754144
   Exists: 1
+--- !u!114 &-1252497111088069939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/Bathroom_Encounter
+  m_EditorClassIdentifier: 
+  Path: event:/Voiceline/Bathroom_Encounter
+  Guid:
+    Data1: -541521860
+    Data2: 1276112382
+    Data3: 959721115
+    Data4: -1494307584
+  Banks:
+  - {fileID: 8359339455592431993}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9064
+--- !u!114 &-97068623087037003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Enviroment/Start_Cutscene
+  m_EditorClassIdentifier: 
+  Path: event:/Enviroment/Start_Cutscene
+  Guid:
+    Data1: 698525449
+    Data2: 1076114788
+    Data3: 317014678
+    Data4: 1983974397
+  Banks:
+  - {fileID: 3991297320497890613}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1350
 --- !u!114 &-65087068196009091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,15 +296,19 @@ MonoBehaviour:
   - {fileID: 5583693712055332243}
   - {fileID: 7878241504501394544}
   - {fileID: -6722553007914153203}
-  - {fileID: 3127458163887256627}
   - {fileID: -2844774609685180185}
+  - {fileID: 4289719877146242153}
+  - {fileID: -4784512763423145740}
+  - {fileID: -1252497111088069939}
+  - {fileID: 1535194556338899778}
+  - {fileID: -97068623087037003}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1615407356134009509}
   StringsBanks:
   - {fileID: 3938149524573279664}
   cacheVersion: 131856
-  cacheTime: 639248496876063843
+  cacheTime: 639254562482055983
   SerializableEventsDict:
   - key: event:/Twst
     index: 0
@@ -237,10 +322,18 @@ MonoBehaviour:
     index: 4
   - key: event:/Edrick/Jumpscare
     index: 5
-  - key: event:/Music/MainMenu
-    index: 6
   - key: event:/Enviroment/MainMenu
+    index: 6
+  - key: event:/Music/MainMenu
     index: 7
+  - key: event:/Objects/FlashLight
+    index: 8
+  - key: event:/Voiceline/Bathroom_Encounter
+    index: 9
+  - key: event:/Voiceline/Start
+    index: 10
+  - key: event:/Enviroment/Start_Cutscene
+    index: 11
 --- !u!114 &590011514357697239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,11 +349,38 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639248496875983823
+  lastModified: 639254193502660830
   FileSizes:
   - Name: Desktop
     Value: 733408
   Exists: 1
+--- !u!114 &1535194556338899778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/Start
+  m_EditorClassIdentifier: 
+  Path: event:/Voiceline/Start
+  Guid:
+    Data1: -1963394938
+    Data2: 1326453372
+    Data3: 1910964911
+    Data4: 1312864659
+  Banks:
+  - {fileID: 8359339455592431993}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14560
 --- !u!114 &1615407356134009509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +396,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639248496875903803
+  lastModified: 639254523914807165
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -296,7 +416,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Edrick.bank
   Name: Edrick
   StudioPath: bank:/Edrick
-  lastModified: 639248496875883798
+  lastModified: 639254193487878131
   FileSizes:
   - Name: Desktop
     Value: 228896
@@ -330,33 +450,6 @@ MonoBehaviour:
   - Gravel
   - Carpet
   Exists: 1
---- !u!114 &3127458163887256627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/MainMenu
-  m_EditorClassIdentifier: 
-  Path: event:/Music/MainMenu
-  Guid:
-    Data1: 887103397
-    Data2: 1175601565
-    Data3: 459837324
-    Data4: -1994483802
-  Banks:
-  - {fileID: 590011514357697239}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 62156
 --- !u!114 &3145855346713565172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,10 +493,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639248496875913806
+  lastModified: 639254523914835894
   FileSizes:
   - Name: Desktop
-    Value: 1410
+    Value: 1628
   Exists: 1
 --- !u!114 &3991297320497890613
 MonoBehaviour:
@@ -420,11 +513,38 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 639248496876043831
+  lastModified: 639254525743223572
   FileSizes:
   - Name: Desktop
-    Value: 374528
+    Value: 394464
   Exists: 1
+--- !u!114 &4289719877146242153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/MainMenu
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MainMenu
+  Guid:
+    Data1: 887103397
+    Data2: 1175601565
+    Data3: 459837324
+    Data4: -1994483802
+  Banks:
+  - {fileID: 590011514357697239}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 62156
 --- !u!114 &4326455390376795694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +560,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Objects.bank
   Name: Objects
   StudioPath: bank:/Objects
-  lastModified: 639248496876003826
+  lastModified: 639254193503946980
   FileSizes:
   - Name: Desktop
     Value: 83520
@@ -515,8 +635,8 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639248496876063843
+  lastModified: 639254562482055983
   FileSizes:
   - Name: Desktop
-    Value: 45696
+    Value: 377760
   Exists: 1

@@ -1,7 +1,8 @@
 == Marco ==
 
 = Ghoul
-Marco: "What the fuck was that!"
+ : #wait:7
+Marco: "What the fuck was that!" #wait:2
 -> END
 
 = Livingroom

@@ -1,12 +1,12 @@
 == Veronica ==
 
 = Start
-Marco: "Veronica, are you sure that this is a good idea?"
-Veronica: "don’t be a baby now"
-Veronica: "Everyone in the group had to do a dare to join"
-Marco: "but I don’t need…"
-Veronica: "you’re lucky that I am basically the leader of the group"
-Veronica: "Or else you would have to do this alone"
+Marco: "Veronica, are you sure that this is a good idea?" #wait:4
+Veronica: "don’t be a baby now" #wait:1,5
+Veronica: "Everyone in the group had to do a dare to join" #wait:2
+Marco: "but I don’t need…" #wait:2
+Veronica: "you’re lucky that I am here" #wait:1,5
+Veronica: "Or else you would have to do this alone" #wait:2
 -> END
 
 = Before_Entering

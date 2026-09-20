@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/+++Workdata/Scenes/Main Menu.unity
     guid: 8938709a55778304fa058fa52d5f9d37
   - enabled: 1
-    path: Assets/+++Workdata/Scenes/DemoScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/+++Workdata/Scenes/Mansion.unity
+    guid: 9d05cd653596650498d02afc449cb90a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

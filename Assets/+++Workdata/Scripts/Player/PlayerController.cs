@@ -294,6 +294,7 @@ public class PlayerController : MonoBehaviour
         _flashlightOn = !_flashlightOn;
         
         flashlight.SetActive(_flashlightOn);
+        RuntimeManager.PlayOneShot("event:/Objects/FlashLight");
     }
     
     private void Crouch(InputAction.CallbackContext ctx)
