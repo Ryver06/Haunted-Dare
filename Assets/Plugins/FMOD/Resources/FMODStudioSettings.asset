@@ -506,7 +506,7 @@ MonoBehaviour:
   EnableErrorCallback: 0
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
-  CurrentVersion: 131856
+  CurrentVersion: 131860
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131856
   Platforms:
@@ -522,7 +522,7 @@ MonoBehaviour:
   - {fileID: 7065760370527402070}
   - {fileID: 7310335519313611311}
   - {fileID: 8106789200885017206}
-  MigratedPlatforms: 09000000080000000b0000000a00000012000000060000000c0000000500000000000000150000000200000001000000
+  MigratedPlatforms: 09000000080000000b0000000a00000012000000060000000c0000000500000000000000150000000200000001000000i
 --- !u!114 &1890601961301619503
 MonoBehaviour:
   m_ObjectHideFlags: 0
