@@ -5,9 +5,15 @@ using UnityEngine.AI;
 public class VeronicaBehaviour : MonoBehaviour
 {
     private static readonly int MovementSpeedId = Animator.StringToHash("MovementValue");
+    private static readonly int Hash_EnterState = Animator.StringToHash("EnterState");
+    private static readonly int Hash_StateId = Animator.StringToHash("StateID");
 
+    [Header("Movement")]
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
+    
+    [Header("Gameplay Settings")]
+    [SerializeField] private GameObject atDoorInteraction;
     
     private Animator animator;
     private NavMeshAgent agent;
@@ -39,4 +45,24 @@ public class VeronicaBehaviour : MonoBehaviour
     {
         _isRunning = isRunning;
     }
+
+    #region Cutscene Events
+
+    public void SetState(bool enterState)
+    {
+        animator.SetBool(Hash_EnterState, enterState);
+    }
+    private void SetState(bool enterState, int id)
+    {
+        animator.SetBool(Hash_EnterState, enterState);
+        animator.SetInteger(Hash_StateId, id);
+    }
+
+    public void AtDoor()
+    {
+        SetState(true, 1);
+        atDoorInteraction.SetActive(true);
+    }
+
+    #endregion
 }
