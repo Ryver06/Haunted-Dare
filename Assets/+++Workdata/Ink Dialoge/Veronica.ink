@@ -10,10 +10,10 @@ Veronica: "Or else you would have to do this alone" #wait:2
 -> END
 
 = Before_Entering
-Veronica: "Looks like whoever lives here, left the door open"
-Marco: "Thats...odd"
-Veronica: "Remember, we just have to stay here for a night"
-Veronica: "without getting caught"
+Veronica: "Looks like whoever lives here, left the door open" #wait:3
+Marco: "Thats...odd" #wait:1,5
+Veronica: "Remember, we just have to stay here for a night" #wait:1,5
+Veronica: "without getting caught" #wait:2
 -> END
 
 = Inside

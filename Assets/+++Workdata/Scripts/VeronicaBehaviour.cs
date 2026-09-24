@@ -13,7 +13,14 @@ public class VeronicaBehaviour : MonoBehaviour
     [SerializeField] private float runSpeed;
     
     [Header("Gameplay Settings")]
+    [Header("Start")]
     [SerializeField] private GameObject atDoorInteraction;
+
+    [Header("At Door")]
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform playerTp;
+    [SerializeField] private Transform VeronicaTp;
+    
     
     private Animator animator;
     private NavMeshAgent agent;
@@ -62,6 +69,11 @@ public class VeronicaBehaviour : MonoBehaviour
     {
         SetState(true, 1);
         atDoorInteraction.SetActive(true);
+    }
+
+    public void Inside()
+    {
+        player.position = playerTp.position;
     }
 
     #endregion

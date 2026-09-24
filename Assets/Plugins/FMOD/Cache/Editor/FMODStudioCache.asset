@@ -41,12 +41,39 @@ MonoBehaviour:
   Banks:
   - {fileID: -6554004672268810976}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 9064
+--- !u!114 &-6639709260029102068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/AtDoor
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Voiceline/AtDoor
+  Guid:
+    Data1: -426120839
+    Data2: 1089224743
+    Data3: -1684471405
+    Data4: 1987877967
+  Banks:
+  - {fileID: -6554004672268810976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8112
 --- !u!114 &-6554004672268810976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,10 +89,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639257132808530788
+  lastModified: 639258004893822546
   FileSizes:
   - Name: Desktop
-    Value: 377760
+    Value: 456512
   Exists: 1
 --- !u!114 &-6077311482116594560
 MonoBehaviour:
@@ -256,7 +283,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639257132785345316
+  lastModified: 639258004892266162
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -343,13 +370,14 @@ MonoBehaviour:
   - {fileID: 4799043894217600734}
   - {fileID: -6926599184455380950}
   - {fileID: 6358312821928012316}
+  - {fileID: -6639709260029102068}
   EditorParameters: []
   MasterBanks:
   - {fileID: -896375558402913437}
   StringsBanks:
   - {fileID: 2112365049813751376}
   cacheVersion: 131860
-  cacheTime: 639257132808530788
+  cacheTime: 639258004893822546
   SerializableEventsDict:
   - key: event:/Enviroment/MainMenu
     index: 0
@@ -444,10 +472,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639257132785365317
+  lastModified: 639258004892286165
   FileSizes:
   - Name: Desktop
-    Value: 1628
+    Value: 1664
   Exists: 1
 --- !u!114 &2758240121736747644
 MonoBehaviour:
