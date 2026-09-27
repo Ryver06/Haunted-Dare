@@ -12,25 +12,29 @@ public class VeronicaBehaviour : MonoBehaviour
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
     
+    [Header("Reference")]
+    [SerializeField] private Animator animator;
+    
     [Header("Gameplay Settings")]
     [Header("Start")]
     [SerializeField] private GameObject atDoorInteraction;
-
+    
     [Header("At Door")]
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerTp;
-    [SerializeField] private Transform VeronicaTp;
     
     
-    private Animator animator;
+    
     private NavMeshAgent agent;
 
     private bool _isRunning;
     
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
+        
         agent = GetComponent<NavMeshAgent>();
+        
+        
     }
 
     private void Update()
@@ -73,6 +77,8 @@ public class VeronicaBehaviour : MonoBehaviour
 
     public void Inside()
     {
+        agent.ResetPath();
+        
         player.position = playerTp.position;
     }
 
