@@ -17,9 +17,9 @@ Veronica: "without getting caught" #wait:2
 -> END
 
 = Inside
-Veronica: "woah, this house is huge!"
-Marco: "Dont be so loud"
-Veronica: "I wonder whats over there"
+Veronica: "woah, this house is huge!" #wait:3
+Marco: "Dont be so loud" #wait:2
+Veronica: "I wonder whats over there" #wait:2
 -> END
 
 = Kitchen

@@ -116,10 +116,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639258004893822546
+  lastModified: 639262192235662760
   FileSizes:
   - Name: Desktop
-    Value: 456512
+    Value: 532960
   Exists: 1
 --- !u!114 &-6077311482116594560
 MonoBehaviour:
@@ -148,6 +148,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2049
+--- !u!114 &-5872950890595274355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/Inside
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Voiceline/Inside
+  Guid:
+    Data1: -2040421755
+    Data2: 1169871944
+    Data3: 1225539239
+    Data4: 755245332
+  Banks:
+  - {fileID: -6554004672268810976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6060
 --- !u!114 &-5722481833285107922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +224,33 @@ MonoBehaviour:
   - Gravel
   - Carpet
   Exists: 1
+--- !u!114 &-4713206115587721496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Door_Locked
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/Door_Locked
+  Guid:
+    Data1: 484817720
+    Data2: 1098789464
+    Data3: 1963517574
+    Data4: 109391514
+  Banks:
+  - {fileID: -351665671946385382}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &-3623892464983008409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +392,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639259646170981010
+  lastModified: 639262261935609648
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -358,10 +412,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 639257132805360772
+  lastModified: 639262261941171428
   FileSizes:
   - Name: Desktop
-    Value: 394464
+    Value: 588544
   Exists: 1
 --- !u!114 &-218983445547656991
 MonoBehaviour:
@@ -428,13 +482,16 @@ MonoBehaviour:
   - {fileID: -6639709260029102068}
   - {fileID: -2061961031550203001}
   - {fileID: -7597221736921102223}
+  - {fileID: -5872950890595274355}
+  - {fileID: -4713206115587721496}
+  - {fileID: 5294741259557659753}
   EditorParameters: []
   MasterBanks:
   - {fileID: -896375558402913437}
   StringsBanks:
   - {fileID: 2112365049813751376}
   cacheVersion: 131860
-  cacheTime: 639259649632135266
+  cacheTime: 639262261941171428
   SerializableEventsDict:
   - key: event:/Enviroment/MainMenu
     index: 0
@@ -466,6 +523,12 @@ MonoBehaviour:
     index: 13
   - key: event:/Enviroment/Outside
     index: 14
+  - key: event:/Voiceline/Inside
+    index: 15
+  - key: event:/Player/Door_Locked
+    index: 16
+  - key: event:/Player/Puzzle
+    index: 17
 --- !u!114 &889764099412312297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,10 +598,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639259646171001023
+  lastModified: 639262261935629650
   FileSizes:
   - Name: Desktop
-    Value: 1798
+    Value: 1936
   Exists: 1
 --- !u!114 &2758240121736747644
 MonoBehaviour:
@@ -622,6 +685,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3844
+--- !u!114 &5294741259557659753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Puzzle
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/Puzzle
+  Guid:
+    Data1: -621070840
+    Data2: 1311814746
+    Data3: -1006403169
+    Data4: -559366590
+  Banks:
+  - {fileID: -351665671946385382}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2500
 --- !u!114 &5840388637182279052
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour
     #region Inspector
 
     public bool canInteract;
+    public string fmodEvent;
     
     [Tooltip("Invoked when the player interacts with the Interactable.")]
     [SerializeField] private UnityEvent onInteracted;
@@ -37,7 +38,11 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        if (!canInteract) return; //return if interaction is turned off
+        if (!canInteract)
+        {
+            RuntimeManager.PlayOneShot(fmodEvent);
+            return;
+        }
         
         Interaction interaction = FindActiveInteraction();
 

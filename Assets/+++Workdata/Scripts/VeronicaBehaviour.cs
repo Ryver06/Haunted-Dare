@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +23,7 @@ public class VeronicaBehaviour : MonoBehaviour
     [Header("At Door")]
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerTp;
+    [SerializeField] private Transform kitchenTp;
     
     
     
@@ -77,9 +79,27 @@ public class VeronicaBehaviour : MonoBehaviour
 
     public void Inside()
     {
-        agent.ResetPath();
+        agent.ResetPath(); //veronica clears her target
         
         player.position = playerTp.position;
+    }
+
+    /// <summary>
+    /// gets called when veronica heads into the dining room
+    /// </summary>
+    public void VeronicaGoesToKitchen()
+    {
+        StartCoroutine(DinningRoomDelayed());
+    }
+
+    IEnumerator DinningRoomDelayed()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        agent.ResetPath();
+        transform.position = kitchenTp.position;
+        
+        gameObject.SetActive(false);
     }
 
     #endregion

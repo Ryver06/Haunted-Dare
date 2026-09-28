@@ -607,6 +607,16 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+    public void SetCursorUnlocked()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+    
+    public void SetCursorLocked()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     
     public int GetCurrentHiddenState ()
     {
