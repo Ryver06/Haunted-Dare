@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class LoadScene : MonoBehaviour
 {
+   [SerializeField] private List<StudioEventEmitter> mainMenuSound;
+   
    public GameObject fadePanel;
    public Animator anim_fadepanel;
 
@@ -25,6 +28,15 @@ public class LoadScene : MonoBehaviour
    {
       anim_fadepanel.Play("FadePanel_fade_in");
       yield return new WaitForSeconds(1f);
+
+      if (mainMenuSound != null)
+      {
+         foreach (StudioEventEmitter emitter in mainMenuSound)
+         {
+            emitter.Stop();
+         }
+      }
+      
       SceneManager.LoadScene(scene);
    }
 

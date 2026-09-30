@@ -40350,6 +40350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fbaee09d84242d469b6eb6d601b20b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuSound:
+  - {fileID: 1400697946}
+  - {fileID: 2076543644}
   fadePanel: {fileID: 1119546155}
   anim_fadepanel: {fileID: 1119546153}
 --- !u!4 &993842318
@@ -84966,7 +84969,7 @@ GameObject:
   - component: {fileID: 2076543643}
   - component: {fileID: 2076543644}
   m_Layer: 0
-  m_Name: Music_1
+  m_Name: Enviroment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -19,6 +19,7 @@ public class VeronicaBehaviour : MonoBehaviour
     [Header("Gameplay Settings")]
     [Header("Start")]
     [SerializeField] private GameObject atDoorInteraction;
+    [SerializeField] private GameObject LivingRoomInteraction;
     
     [Header("At Door")]
     [SerializeField] private Transform player;
@@ -89,18 +90,18 @@ public class VeronicaBehaviour : MonoBehaviour
     /// </summary>
     public void VeronicaGoesToKitchen()
     {
-        StartCoroutine(DinningRoomDelayed());
-    }
-
-    IEnumerator DinningRoomDelayed()
-    {
-        yield return new WaitForSeconds(2f);
-        
         agent.ResetPath();
         transform.position = kitchenTp.position;
         
         gameObject.SetActive(false);
     }
+
+    public void LivingRoom()
+    {
+        SetState(true,2);
+        LivingRoomInteraction.SetActive(true);
+    }
+    
 
     #endregion
 }

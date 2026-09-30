@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +18,8 @@ public class NoiseMeter : MonoBehaviour
    [SerializeField] private Image noiseMeter; 
    [SerializeField] private GameObject noiseUI;
 
+   [Header("Living Room")]
+   [SerializeField] private bool inLivingRoom;
 
  private bool active = false; //is this mode active or not
    private void Awake()
@@ -75,9 +79,22 @@ public class NoiseMeter : MonoBehaviour
 
    private void TooLoud()
    {
+       if (inLivingRoom)
+       {
+           if (noise >= tooLoud)
+           {
+               inLivingRoom = false;
+               RuntimeManager.PlayOneShot("event:/Voiceline/DeepSleeper");
+               DeactivateNoiseMeter();
+               return;
+           }
+       }
+       
        if (noise >= tooLoud)
        {
            EdrickBehaviour.Instance.HeardPlayer();
        }
    }
+
+  
 }

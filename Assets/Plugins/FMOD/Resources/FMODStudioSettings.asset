@@ -491,6 +491,7 @@ MonoBehaviour:
   Banks:
   - Ambient
   - Edrick
+  - Effects
   - Music
   - Objects
   - Player

@@ -23,30 +23,32 @@ Veronica: "I wonder whats over there" #wait:2
 -> END
 
 = Kitchen
-Veronica: "Marco! Look at all this food"
-Veronica: "The guy must be rich!"
-Marco: "Maybe we should leave, this place creeps me out"
-Veronica: "don’t be a baby, we just got here"
-Marco: "Veronica, I am serious-"
-Veronica: "I wonder what else is here" //veronica runs off
-Marco: "sigh"
+Veronica: "Marco!" #wait:1,5
+ : #wait:1
+Veronica: "Look at all this food" #wait:1,5
+Veronica: "The guy must be rich!" #wait:1,5
+Marco: "Maybe we should leave, this place creeps me out" #wait:4
+Veronica: "don’t be a baby, we just got here" #wait:2
+Marco: "Veronica, I am serious!" #wait:2,5
+Veronica: "I wonder what else is here" #wait:2
 -> END
 
 = Livingroom
-Veronica: "have you seen that hairy guy on the couch?"
-veronica: "It’s like he doesn’t know what a razor is"
-Marco: "We should go"
-Marco: "I don’t think this house is normal"
-Veronica: "of course it isn’t"
-Veronica: "Have you seen all these books?"
-Veronica: "A really old, rich guy lives here, for sure"
-Marco: "That’s not what I mean"
-Marco: "there was some type of ghost or something"
-Veronica: "Marco, I am not a kid anymore"
-Veronica: "You cant scare me with your fake stories"
-Marco: "But I am not-"
-Veronica: "I am going to check upstairs, either you come with me, or not" //Veronica runs off
-Marco: "damn it"
+Veronica: "have you seen that hairy guy on the couch?" #wait:2
+veronica: "It’s like he doesn’t know what a razor is" #wait:2
+Marco: "We should go" #wait:2
+Marco: "I don’t think this house is normal" #wait:2
+Veronica: "of course it isn’t" #wait:1,5
+Veronica: "Have you seen all these books?" #wait:2
+Veronica: "A really old, rich guy lives here, for sure" #wait:4
+Marco: "That’s not what I mean" #wait:2
+Marco: "there was some type of ghost or something" #wait:3
+Veronica: "Marco, I am not a kid anymore" #wait:2
+Veronica: "You cant scare me with your fake stories" #wait:2,5
+Marco: "But I am not-" #wait:0,5
+Veronica: "I am going to check upstairs, either you come with me, or not" #wait:4
+ : #wait:2
+Marco: "damn it" #wait:2
 -> END
 
 = Office

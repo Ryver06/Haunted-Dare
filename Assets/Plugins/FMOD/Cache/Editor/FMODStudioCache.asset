@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639259628819656078
+  lastModified: 639262983033704625
   FileSizes:
   - Name: Desktop
     Value: 5449152
@@ -116,10 +116,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639262192235662760
+  lastModified: 639263955227953587
   FileSizes:
   - Name: Desktop
-    Value: 532960
+    Value: 1006784
   Exists: 1
 --- !u!114 &-6077311482116594560
 MonoBehaviour:
@@ -224,6 +224,33 @@ MonoBehaviour:
   - Gravel
   - Carpet
   Exists: 1
+--- !u!114 &-5056299180393980008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Snoring
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Snoring
+  Guid:
+    Data1: -1046639119
+    Data2: 1243170606
+    Data3: -340837957
+    Data4: -2076195588
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 30477
 --- !u!114 &-4713206115587721496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +278,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &-3940430827090474511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/LivingRoom
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Voiceline/LivingRoom
+  Guid:
+    Data1: -258195044
+    Data2: 1120669025
+    Data3: -1631875668
+    Data4: 1727000618
+  Banks:
+  - {fileID: -6554004672268810976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 31116
 --- !u!114 &-3623892464983008409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +446,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639262261935609648
+  lastModified: 639263939066725027
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -412,10 +466,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 639262261941171428
+  lastModified: 639262956262534111
   FileSizes:
   - Name: Desktop
-    Value: 588544
+    Value: 756512
   Exists: 1
 --- !u!114 &-218983445547656991
 MonoBehaviour:
@@ -466,6 +520,7 @@ MonoBehaviour:
   - {fileID: -5722481833285107922}
   - {fileID: -351665671946385382}
   - {fileID: -6554004672268810976}
+  - {fileID: 9204368208412921036}
   EditorEvents:
   - {fileID: 889764099412312297}
   - {fileID: 6875577302252794727}
@@ -485,13 +540,20 @@ MonoBehaviour:
   - {fileID: -5872950890595274355}
   - {fileID: -4713206115587721496}
   - {fileID: 5294741259557659753}
+  - {fileID: 4367219000248498722}
+  - {fileID: 1050985895790798330}
+  - {fileID: 4157566780480838709}
+  - {fileID: -5056299180393980008}
+  - {fileID: 5611490841637033101}
+  - {fileID: 3490971552931906810}
+  - {fileID: -3940430827090474511}
   EditorParameters: []
   MasterBanks:
   - {fileID: -896375558402913437}
   StringsBanks:
   - {fileID: 2112365049813751376}
   cacheVersion: 131860
-  cacheTime: 639262261941171428
+  cacheTime: 639263955227953587
   SerializableEventsDict:
   - key: event:/Enviroment/MainMenu
     index: 0
@@ -529,6 +591,20 @@ MonoBehaviour:
     index: 16
   - key: event:/Player/Puzzle
     index: 17
+  - key: event:/Player/FollowVeronica
+    index: 18
+  - key: event:/Little_Effects/Gasp
+    index: 19
+  - key: event:/Voiceline/Kitchen
+    index: 20
+  - key: event:/Little_Effects/Snoring
+    index: 21
+  - key: event:/Voiceline/DeepSleeper
+    index: 22
+  - key: event:/Little_Effects/Tv
+    index: 23
+  - key: event:/Voiceline/LivingRoom
+    index: 24
 --- !u!114 &889764099412312297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,6 +659,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1350
+--- !u!114 &1050985895790798330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Gasp
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Gasp
+  Guid:
+    Data1: 391620501
+    Data2: 1171665137
+    Data3: 1238129317
+    Data4: 840938872
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1056
 --- !u!114 &2112365049813751376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,10 +701,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639262261935629650
+  lastModified: 639263939066745051
   FileSizes:
   - Name: Desktop
-    Value: 1936
+    Value: 2284
   Exists: 1
 --- !u!114 &2758240121736747644
 MonoBehaviour:
@@ -658,6 +761,87 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 62156
+--- !u!114 &3490971552931906810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Tv
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Tv
+  Guid:
+    Data1: 524913219
+    Data2: 1308946900
+    Data3: 1872514204
+    Data4: -542556537
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 16149
+--- !u!114 &4157566780480838709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/Kitchen
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Voiceline/Kitchen
+  Guid:
+    Data1: 1524914025
+    Data2: 1195378086
+    Data3: -1232543832
+    Data4: -1203030832
+  Banks:
+  - {fileID: -6554004672268810976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 18656
+--- !u!114 &4367219000248498722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/FollowVeronica
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/FollowVeronica
+  Guid:
+    Data1: 1181559614
+    Data2: 1103146642
+    Data3: 269118126
+    Data4: -2025752429
+  Banks:
+  - {fileID: -351665671946385382}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4500
 --- !u!114 &4799043894217600734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,6 +896,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2500
+--- !u!114 &5611490841637033101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/DeepSleeper
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Voiceline/DeepSleeper
+  Guid:
+    Data1: 310539026
+    Data2: 1261588442
+    Data3: 401654461
+    Data4: -492007968
+  Banks:
+  - {fileID: -6554004672268810976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2064
 --- !u!114 &5840388637182279052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,3 +1056,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &9204368208412921036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Effects.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/FMOD/Haunted Dare/Build/Desktop/Effects.bank
+  Name: Effects
+  StudioPath: bank:/Effects
+  lastModified: 639263891059513882
+  FileSizes:
+  - Name: Desktop
+    Value: 585120
+  Exists: 1
