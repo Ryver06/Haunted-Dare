@@ -116,7 +116,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639263955227953587
+  lastModified: 639264160695641462
   FileSizes:
   - Name: Desktop
     Value: 1006784
@@ -278,6 +278,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &-4604939375206632183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Paper_Close
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Paper_Close
+  Guid:
+    Data1: -1465201809
+    Data2: 1244875088
+    Data3: -10641221
+    Data4: -1015523213
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 940
 --- !u!114 &-3940430827090474511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,7 +473,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639263939066725027
+  lastModified: 639264633606647289
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -547,13 +574,15 @@ MonoBehaviour:
   - {fileID: 5611490841637033101}
   - {fileID: 3490971552931906810}
   - {fileID: -3940430827090474511}
+  - {fileID: -4604939375206632183}
+  - {fileID: 7325488995164356998}
   EditorParameters: []
   MasterBanks:
   - {fileID: -896375558402913437}
   StringsBanks:
   - {fileID: 2112365049813751376}
   cacheVersion: 131860
-  cacheTime: 639263955227953587
+  cacheTime: 639264633606673055
   SerializableEventsDict:
   - key: event:/Enviroment/MainMenu
     index: 0
@@ -605,6 +634,10 @@ MonoBehaviour:
     index: 23
   - key: event:/Voiceline/LivingRoom
     index: 24
+  - key: event:/Little_Effects/Paper_Close
+    index: 25
+  - key: event:/Little_Effects/Paper
+    index: 26
 --- !u!114 &889764099412312297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,10 +734,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639263939066745051
+  lastModified: 639264633606673055
   FileSizes:
   - Name: Desktop
-    Value: 2284
+    Value: 2368
   Exists: 1
 --- !u!114 &2758240121736747644
 MonoBehaviour:
@@ -814,7 +847,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 18656
+  Length: 19656
 --- !u!114 &4367219000248498722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,6 +1034,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5977
+--- !u!114 &7325488995164356998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Paper
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Paper
+  Guid:
+    Data1: -669895504
+    Data2: 1221859703
+    Data3: 342064812
+    Data4: 348678088
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
 --- !u!114 &7800525179604594168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1071,8 +1131,8 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 639263891059513882
+  lastModified: 639264633606497242
   FileSizes:
   - Name: Desktop
-    Value: 585120
+    Value: 701312
   Exists: 1

@@ -79,16 +79,8 @@ public class NoiseMeter : MonoBehaviour
 
    private void TooLoud()
    {
-       if (inLivingRoom)
-       {
-           if (noise >= tooLoud)
-           {
-               inLivingRoom = false;
-               RuntimeManager.PlayOneShot("event:/Voiceline/DeepSleeper");
-               DeactivateNoiseMeter();
-               return;
-           }
-       }
+       if (inLivingRoom) return;
+       
        
        if (noise >= tooLoud)
        {
@@ -96,5 +88,11 @@ public class NoiseMeter : MonoBehaviour
        }
    }
 
+   public void DeactivateNoiseMeter_LivingRoom()
+   {
+       DeactivateNoiseMeter();
+       RuntimeManager.PlayOneShot("event:/Voiceline/DeepSleeper");
+       inLivingRoom = false;
+   }
   
 }

@@ -24,7 +24,7 @@ Veronica: "I wonder whats over there" #wait:2
 
 = Kitchen
 Veronica: "Marco!" #wait:1,5
- : #wait:1
+ : #wait:2
 Veronica: "Look at all this food" #wait:1,5
 Veronica: "The guy must be rich!" #wait:1,5
 Marco: "Maybe we should leave, this place creeps me out" #wait:4
@@ -44,9 +44,9 @@ Veronica: "A really old, rich guy lives here, for sure" #wait:4
 Marco: "That’s not what I mean" #wait:2
 Marco: "there was some type of ghost or something" #wait:3
 Veronica: "Marco, I am not a kid anymore" #wait:2
-Veronica: "You cant scare me with your fake stories" #wait:2,5
+Veronica: "You cant scare me with your fake stories" #wait:2
 Marco: "But I am not-" #wait:0,5
-Veronica: "I am going to check upstairs, either you come with me, or not" #wait:4
+Veronica: "I am going to check upstairs, either you come with me, or not" #wait:3,5
  : #wait:2
 Marco: "damn it" #wait:2
 -> END

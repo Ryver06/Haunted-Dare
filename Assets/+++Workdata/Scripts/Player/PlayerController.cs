@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
     private bool _canRun;
     private bool _canJump;
     private bool _sprintHeld;
+    private bool _canMove = true;
     
     //player 1st person cam
     private Vector2 _lookInput;
@@ -357,11 +358,14 @@ public class PlayerController : MonoBehaviour
     public void EnableInput()
     {
         inputActions.Enable();
+        _canMove = true;
     }
     
     public void DisableInput()
     {
         inputActions.Disable();
+        _canMove = false;
+        anim.SetFloat(Hash_MovementValue, 0);
     }
 
     #endregion
@@ -415,6 +419,8 @@ public class PlayerController : MonoBehaviour
     private void Movement()
     {
         if(_inLocker) return;
+        if (!_canMove) return;
+        
         
         Vector3 finalMove = (_moveDir * _currentSpeed) + velocity;
 

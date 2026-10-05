@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -48,4 +49,13 @@ public class UIManager : MonoBehaviour
     {
         DisableUI(deathUIList);
     }
+
+    #region Sound Design
+
+    public void PlayAudio(string audioName)
+    {
+        RuntimeManager.PlayOneShot(audioName);
+    }
+
+    #endregion
 }
