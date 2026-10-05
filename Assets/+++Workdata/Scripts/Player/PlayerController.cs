@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     [Header("Jumpscare")]
     [SerializeField] private PlayableDirector jumpscare;
     [SerializeField] private float jumpscareTimer;
+    [SerializeField] private List<StudioEventEmitter> musics;
+    [SerializeField] private GameObject deathMusic;
     
     [Header("Flashlight")]
     [SerializeField] private GameObject flashlight;
@@ -476,6 +478,12 @@ public class PlayerController : MonoBehaviour
     private IEnumerator JumpscareRoutine()
     {
         _canPause = false;
+
+        //stop all music
+        foreach (var music in musics)
+        {
+            music.Stop();
+        }
         
        DisableInput();
        UIManager.Instance.DisableForDeathUI();
@@ -486,6 +494,9 @@ public class PlayerController : MonoBehaviour
        
        yield return new WaitForSeconds(2f);
        Cursor.lockState = CursorLockMode.None;
+       
+       yield return new WaitForSeconds(2f);
+       deathMusic.SetActive(true); // play death music
     }
 
     #region Ground Check
@@ -507,6 +518,12 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimator()
     {
+        if (!_canMove)
+        {
+            anim.SetFloat(Hash_MovementValue, 0);  
+            return;
+        }
+        
         Vector3 horizontalVelocity = controller.velocity;
         horizontalVelocity.y = 0;
 

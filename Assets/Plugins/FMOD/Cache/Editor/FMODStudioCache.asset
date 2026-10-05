@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639262983033704625
+  lastModified: 639268249156471972
   FileSizes:
   - Name: Desktop
-    Value: 5449152
+    Value: 5882656
   Exists: 1
 --- !u!114 &-7597221736921102223
 MonoBehaviour:
@@ -428,7 +428,7 @@ MonoBehaviour:
   - {fileID: 5840388637182279052}
   MinDistance: 1
   MaxDistance: 20
-  Length: 431676
+  Length: 511731
 --- !u!114 &-971768984474091149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639264633606647289
+  lastModified: 639268226230456640
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -576,13 +576,14 @@ MonoBehaviour:
   - {fileID: -3940430827090474511}
   - {fileID: -4604939375206632183}
   - {fileID: 7325488995164356998}
+  - {fileID: 4200082924492626909}
   EditorParameters: []
   MasterBanks:
   - {fileID: -896375558402913437}
   StringsBanks:
   - {fileID: 2112365049813751376}
   cacheVersion: 131860
-  cacheTime: 639264633606673055
+  cacheTime: 639268249156471972
   SerializableEventsDict:
   - key: event:/Enviroment/MainMenu
     index: 0
@@ -638,6 +639,8 @@ MonoBehaviour:
     index: 25
   - key: event:/Little_Effects/Paper
     index: 26
+  - key: event:/Little_Effects/Edrick Scream
+    index: 27
 --- !u!114 &889764099412312297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,10 +737,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639264633606673055
+  lastModified: 639268226230486639
   FileSizes:
   - Name: Desktop
-    Value: 2368
+    Value: 2412
   Exists: 1
 --- !u!114 &2758240121736747644
 MonoBehaviour:
@@ -848,6 +851,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 19656
+--- !u!114 &4200082924492626909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Edrick Scream
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Edrick Scream
+  Guid:
+    Data1: -130950321
+    Data2: 1302973491
+    Data3: 1538509960
+    Data4: -776603863
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 10340
 --- !u!114 &4367219000248498722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,8 +1161,8 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 639264633606497242
+  lastModified: 639268249155454221
   FileSizes:
   - Name: Desktop
-    Value: 701312
+    Value: 746368
   Exists: 1

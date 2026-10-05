@@ -26,4 +26,6 @@ public class CutsceneManager : MonoBehaviour
         veronica.position = tp.position;
         veronica.rotation = tp.rotation;
     }
+
+    
 }
