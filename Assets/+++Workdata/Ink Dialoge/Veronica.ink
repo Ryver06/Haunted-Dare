@@ -52,12 +52,12 @@ Marco: "damn it" #wait:2
 -> END
 
 = Office
-Veronica: "What the fuck was that!"
-Marco: "that cant be human"
-Veronica: "We need to leave, right now!"
-Marco: "Don’t run off again!"
-Marco: "that thing is probably waiting for us outside"
-Marco: "Lets try to sneak our way out"
+Veronica: "What the fuck was that!" #wait:2,2
+Marco: "that cant be human" #wait:2,8
+Veronica: "We need to leave, right now!" #wait:2
+Marco: "Don’t run off again!" #wait:1,1
+Marco: "that thing is probably waiting for us outside" #wait:3,6
+Marco: "Lets try to sneak our way out" #wait:2
 -> END
 
 = Exit

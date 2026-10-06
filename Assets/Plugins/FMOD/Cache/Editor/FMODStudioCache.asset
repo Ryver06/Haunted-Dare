@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9130954678682815312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/Office
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Voiceline/Office
+  Guid:
+    Data1: 1464291419
+    Data2: 1093891434
+    Data3: -2132073814
+    Data4: -903133875
+  Banks:
+  - {fileID: -6554004672268810976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 13564
 --- !u!114 &-8424928411519052502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,7 +42,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639268739113116119
+  lastModified: 639268249156471972
   FileSizes:
   - Name: Desktop
     Value: 5882656
@@ -116,10 +143,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639268739113116119
+  lastModified: 639269099643611113
   FileSizes:
   - Name: Desktop
-    Value: 1006784
+    Value: 1147808
   Exists: 1
 --- !u!114 &-6077311482116594560
 MonoBehaviour:
@@ -190,7 +217,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Objects.bank
   Name: Objects
   StudioPath: bank:/Objects
-  lastModified: 639268739113116119
+  lastModified: 639257132799034664
   FileSizes:
   - Name: Desktop
     Value: 83520
@@ -347,7 +374,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Ambient.bank
   Name: Ambient
   StudioPath: bank:/Ambient
-  lastModified: 639268739112935930
+  lastModified: 639259649632135266
   FileSizes:
   - Name: Desktop
     Value: 2413440
@@ -367,7 +394,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Edrick.bank
   Name: Edrick
   StudioPath: bank:/Edrick
-  lastModified: 639268739112935930
+  lastModified: 639257132785225246
   FileSizes:
   - Name: Desktop
     Value: 228896
@@ -473,7 +500,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639268739112935930
+  lastModified: 639269099639417098
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -493,7 +520,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 639268739113116119
+  lastModified: 639262956262534111
   FileSizes:
   - Name: Desktop
     Value: 756512
@@ -577,13 +604,14 @@ MonoBehaviour:
   - {fileID: -4604939375206632183}
   - {fileID: 7325488995164356998}
   - {fileID: 4200082924492626909}
+  - {fileID: -9130954678682815312}
   EditorParameters: []
   MasterBanks:
   - {fileID: -896375558402913437}
   StringsBanks:
   - {fileID: 2112365049813751376}
   cacheVersion: 131860
-  cacheTime: 639268739113116119
+  cacheTime: 639269099643611113
   SerializableEventsDict:
   - key: event:/Enviroment/MainMenu
     index: 0
@@ -641,6 +669,8 @@ MonoBehaviour:
     index: 26
   - key: event:/Little_Effects/Edrick Scream
     index: 27
+  - key: event:/Voiceline/Office
+    index: 28
 --- !u!114 &889764099412312297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,10 +767,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639268739112935930
+  lastModified: 639269099639437099
   FileSizes:
   - Name: Desktop
-    Value: 2412
+    Value: 2450
   Exists: 1
 --- !u!114 &2758240121736747644
 MonoBehaviour:
@@ -1161,7 +1191,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 639268739112935930
+  lastModified: 639268249155454221
   FileSizes:
   - Name: Desktop
     Value: 746368
