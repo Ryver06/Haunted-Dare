@@ -7,6 +7,8 @@ using FMODUnity;
 
 public class LoadScene : MonoBehaviour
 {
+   public static LoadScene Instance;
+   
    [SerializeField] private List<StudioEventEmitter> mainMenuSound;
    
    public GameObject fadePanel;
@@ -17,6 +19,8 @@ public class LoadScene : MonoBehaviour
    
    private void Awake()
    {
+      
+      Instance = this;
       anim_fadepanel.Play("FadePanel_fade_out");
    }
 

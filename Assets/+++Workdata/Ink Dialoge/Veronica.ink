@@ -1,4 +1,4 @@
-== Veronica ==
+ == Veronica ==
 
 = Start
 Marco: "Veronica, are you sure that this is a good idea?" #wait:4
@@ -61,16 +61,16 @@ Marco: "Lets try to sneak our way out" #wait:2
 -> END
 
 = Exit
-Marco: "the door is locked!"
-Veronica: "okay, okay...lets think"
-Veronica: "There must be a key somewhere"
-Marco: "yeah...you’re probably right"
-Marco: "Okay.if I were a key, where would I hide?"
-Veronica: "how about we check upstairs again?"
-Veronica: "I didn’t look around the office, yet"
-Marco: "right, what about the locked room?"
-Veronica: "try it with this key"
-Veronica: "You look in the locked Room and I check out the Office"
+Marco: "the door is locked!" #wait:1,7
+Veronica: "okay, okay...lets think" #wait:3,3
+Veronica: "There must be a key somewhere" #wait:2,2
+Marco: "yeah...you’re probably right" #wait:3
+Marco: "Okay.if I were a key, where would I hide?" #wait:6,3
+Veronica: "how about we check upstairs again?" #wait:2
+Veronica: "I didn’t look around the office, yet" #wait:2,5
+Marco: "right, what about the locked room?" #wait:2,6
+Veronica: "try it with this key" #wait:1,3
+Veronica: "You look in the locked Room and I check out the Office" #wait:3
 -> END
 
 = Ofiice_noTrophy

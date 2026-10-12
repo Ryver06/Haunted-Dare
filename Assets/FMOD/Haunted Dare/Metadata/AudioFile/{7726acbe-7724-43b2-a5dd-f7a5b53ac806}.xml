@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{7726acbe-7724-43b2-a5dd-f7a5b53ac806}">
+		<property name="assetPath">
+			<value>Voicelines/Edricks voice edited/cant hide/YouCantHide005.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.6964172335600907</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{864af8d7-7961-4f01-b842-6abb1c54807c}</destination>
+		</relationship>
+	</object>
+</objects>

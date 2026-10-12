@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{db413e9e-510f-4a1e-bc8a-11a9f13d08db}">
+		<property name="assetPath">
+			<value>Voicelines/Edricks voice edited/found you/FoundYouEdrick006.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.6160770975056691</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{864af8d7-7961-4f01-b842-6abb1c54807c}</destination>
+		</relationship>
+	</object>
+</objects>

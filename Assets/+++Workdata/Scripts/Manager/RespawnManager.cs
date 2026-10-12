@@ -12,6 +12,7 @@ public class RespawnManager : MonoBehaviour
       
       public Transform respawnPoint;
       public Transform enemyRespawnPoint;
+      public Transform edrick;
       
       public List<GameObject> deactiveObjects; //objects that need to be turned off after respawning
       public List<GameObject> activeObjects; //objects that need to be turned on after respawning
@@ -23,7 +24,6 @@ public class RespawnManager : MonoBehaviour
    
 
    [SerializeField] private Transform player;
-   [SerializeField] private Transform edrick;
    
    public List<RespawnProperties> respawnProperties;
 
@@ -47,7 +47,9 @@ public class RespawnManager : MonoBehaviour
    private void Respawn(int respawnId)
    {
       player.position = respawnProperties[respawnId].respawnPoint.position; //puts player on spawn point
-      edrick.position = respawnProperties[respawnId].enemyRespawnPoint.position; //puts edrick on spawn point
+      
+      //puts specific edrick on spawn point
+      respawnProperties[respawnId].edrick.position = respawnProperties[respawnId].enemyRespawnPoint.position; 
       
       //matches the id in the list and turns the objects on, which are in the activeObjects list
       foreach (var obj in respawnProperties[respawnId].activeObjects)

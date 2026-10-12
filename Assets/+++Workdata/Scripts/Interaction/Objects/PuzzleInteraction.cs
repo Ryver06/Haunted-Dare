@@ -7,6 +7,7 @@ public class PuzzleInteraction : MonoBehaviour
    public string fmodEvent;
 
    public List<Interactable> pictures;
+   public List<Interactable> doors;
 
 
    private int _count; //use to only set pictures interactable once
@@ -42,5 +43,13 @@ public class PuzzleInteraction : MonoBehaviour
       }
 
       _count = 1;
+   }
+   
+   public void SetDoorsInteractable()
+   {
+      foreach (Interactable interactable in doors)
+      {
+         interactable.canInteract = true;
+      }
    }
 }

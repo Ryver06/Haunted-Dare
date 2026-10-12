@@ -47,6 +47,34 @@ MonoBehaviour:
   - Name: Desktop
     Value: 5882656
   Exists: 1
+--- !u!114 &-8335067857534503027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Edrick/Footsteps_Walk
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Edrick/Footsteps_Walk
+  Guid:
+    Data1: 370402378
+    Data2: 1194302481
+    Data3: -158890852
+    Data4: 1975198957
+  Banks:
+  - {fileID: -3186701781417957750}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -7086656684584639071}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-7597221736921102223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +102,35 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 34500
+--- !u!114 &-7086656684584639071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps_Walk/Terrain
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Terrain
+  StudioPath: 
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 504048513
+    data2: 1377205032
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Wood
+  - Grass
+  - Stone
+  - Gravel
+  - Carpet
+  Exists: 1
 --- !u!114 &-6926599184455380950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,10 +200,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639269099643611113
+  lastModified: 639274342117778811
   FileSizes:
   - Name: Desktop
-    Value: 1147808
+    Value: 1448576
   Exists: 1
 --- !u!114 &-6077311482116594560
 MonoBehaviour:
@@ -394,10 +451,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Edrick.bank
   Name: Edrick
   StudioPath: bank:/Edrick
-  lastModified: 639257132785225246
+  lastModified: 639272482602429149
   FileSizes:
   - Name: Desktop
-    Value: 228896
+    Value: 474592
   Exists: 1
 --- !u!114 &-2222785181652585586
 MonoBehaviour:
@@ -500,7 +557,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639269099639417098
+  lastModified: 639274342113318836
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -605,13 +662,16 @@ MonoBehaviour:
   - {fileID: 7325488995164356998}
   - {fileID: 4200082924492626909}
   - {fileID: -9130954678682815312}
+  - {fileID: 1679283639613451231}
+  - {fileID: -8335067857534503027}
+  - {fileID: 5390195254749163133}
   EditorParameters: []
   MasterBanks:
   - {fileID: -896375558402913437}
   StringsBanks:
   - {fileID: 2112365049813751376}
   cacheVersion: 131860
-  cacheTime: 639269099643611113
+  cacheTime: 639274342117778811
   SerializableEventsDict:
   - key: event:/Enviroment/MainMenu
     index: 0
@@ -671,6 +731,12 @@ MonoBehaviour:
     index: 27
   - key: event:/Voiceline/Office
     index: 28
+  - key: event:/Little_Effects/Door_Banging
+    index: 29
+  - key: event:/Edrick/Footsteps_Walk
+    index: 30
+  - key: event:/Voiceline/Exit
+    index: 31
 --- !u!114 &889764099412312297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,6 +818,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1056
+--- !u!114 &1679283639613451231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Door_Banging
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Door_Banging
+  Guid:
+    Data1: -724193528
+    Data2: 1290582479
+    Data3: -2141380183
+    Data4: -907185478
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 7184
 --- !u!114 &2112365049813751376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,10 +860,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639269099639437099
+  lastModified: 639274342113348863
   FileSizes:
   - Name: Desktop
-    Value: 2450
+    Value: 2584
   Exists: 1
 --- !u!114 &2758240121736747644
 MonoBehaviour:
@@ -989,6 +1082,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2500
+--- !u!114 &5390195254749163133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/Exit
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Voiceline/Exit
+  Guid:
+    Data1: -494410384
+    Data2: 1130337207
+    Data3: -444610409
+    Data4: -779732022
+  Banks:
+  - {fileID: -6554004672268810976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 28688
 --- !u!114 &5611490841637033101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,8 +1311,8 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 639268249155454221
+  lastModified: 639270807460868850
   FileSizes:
   - Name: Desktop
-    Value: 746368
+    Value: 807392
   Exists: 1
