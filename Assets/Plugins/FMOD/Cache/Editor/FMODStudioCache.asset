@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 13564
+--- !u!114 &-8619991680153580380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/Exit_Bad_1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Voiceline/Exit_Bad_1
+  Guid:
+    Data1: 1592969277
+    Data2: 1119146148
+    Data3: -1817561214
+    Data4: -2063314500
+  Banks:
+  - {fileID: -6554004672268810976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4877
 --- !u!114 &-8424928411519052502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +129,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 34500
+--- !u!114 &-7347948862751190369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Edrick Scream_Instant
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Edrick Scream_Instant
+  Guid:
+    Data1: -1202445242
+    Data2: 1122343940
+    Data3: -440026469
+    Data4: -1488108185
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3140
 --- !u!114 &-7086656684584639071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,10 +254,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639274342117778811
+  lastModified: 639276188799964826
   FileSizes:
   - Name: Desktop
-    Value: 1448576
+    Value: 1539488
   Exists: 1
 --- !u!114 &-6077311482116594560
 MonoBehaviour:
@@ -436,6 +490,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 2413440
   Exists: 1
+--- !u!114 &-3408366544718433379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/Exit_Bad_2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Voiceline/Exit_Bad_2
+  Guid:
+    Data1: 1246773378
+    Data2: 1102099897
+    Data3: 2076443836
+    Data4: -1686631077
+  Banks:
+  - {fileID: -6554004672268810976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &-3186701781417957750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +537,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 474592
   Exists: 1
+--- !u!114 &-2586678418232207584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Veronica/Veronica_Choking
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Veronica/Veronica_Choking
+  Guid:
+    Data1: -1079081314
+    Data2: 1178138277
+    Data3: 312690829
+    Data4: -1923883162
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 12500
 --- !u!114 &-2222785181652585586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,7 +665,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639274342113318836
+  lastModified: 639276210396489743
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -665,13 +773,19 @@ MonoBehaviour:
   - {fileID: 1679283639613451231}
   - {fileID: -8335067857534503027}
   - {fileID: 5390195254749163133}
+  - {fileID: -8619991680153580380}
+  - {fileID: -3408366544718433379}
+  - {fileID: 4746274071050004071}
+  - {fileID: -2586678418232207584}
+  - {fileID: 8184907323292451136}
+  - {fileID: -7347948862751190369}
   EditorParameters: []
   MasterBanks:
   - {fileID: -896375558402913437}
   StringsBanks:
   - {fileID: 2112365049813751376}
   cacheVersion: 131860
-  cacheTime: 639274342117778811
+  cacheTime: 639276210396519768
   SerializableEventsDict:
   - key: event:/Enviroment/MainMenu
     index: 0
@@ -737,6 +851,18 @@ MonoBehaviour:
     index: 30
   - key: event:/Voiceline/Exit
     index: 31
+  - key: event:/Voiceline/Exit_Bad_1
+    index: 32
+  - key: event:/Voiceline/Exit_Bad_2
+    index: 33
+  - key: event:/Little_Effects/Veronica/Veronica_dying
+    index: 34
+  - key: event:/Little_Effects/Veronica/Veronica_Choking
+    index: 35
+  - key: event:/Little_Effects/Veronica/Veronica_Falling
+    index: 36
+  - key: event:/Little_Effects/Edrick Scream_Instant
+    index: 37
 --- !u!114 &889764099412312297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,10 +986,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639274342113348863
+  lastModified: 639276210396519768
   FileSizes:
   - Name: Desktop
-    Value: 2584
+    Value: 2868
   Exists: 1
 --- !u!114 &2758240121736747644
 MonoBehaviour:
@@ -1028,6 +1154,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4500
+--- !u!114 &4746274071050004071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Veronica/Veronica_dying
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Veronica/Veronica_dying
+  Guid:
+    Data1: -610431646
+    Data2: 1334837797
+    Data3: 1450677926
+    Data4: -1216157637
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4207
 --- !u!114 &4799043894217600734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1268,6 +1421,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 350
+--- !u!114 &8184907323292451136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Veronica/Veronica_Falling
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Veronica/Veronica_Falling
+  Guid:
+    Data1: -1412354522
+    Data2: 1219501188
+    Data3: -600500064
+    Data4: 489885302
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 559
 --- !u!114 &8477086972305900637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,8 +1491,8 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 639270807460868850
+  lastModified: 639276210396399711
   FileSizes:
   - Name: Desktop
-    Value: 807392
+    Value: 1166144
   Exists: 1

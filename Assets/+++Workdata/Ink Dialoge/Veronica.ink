@@ -74,8 +74,11 @@ Veronica: "You look in the locked Room and I check out the Office" #wait:3
 -> END
 
 = Ofiice_noTrophy
-Edrick: "You will make a fine addition to my collection"
-Marco: "Veronica..."
+Edrick: "You are perfect for my collection" #wait:2,5
+-> END
+
+= Ofiice_noTrophy_2
+Marco: "Veronica..." #wait:1
 -> END
 
 = Office_Trophy
