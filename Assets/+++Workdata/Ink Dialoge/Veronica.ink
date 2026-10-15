@@ -82,10 +82,11 @@ Marco: "Veronica..." #wait:1
 -> END
 
 = Office_Trophy
-Edrick: "You will make a fine addition to my collection"
-Marco: "Let her go!"
-Edrick: "Where did you get that!?"
-Edrick: "No!"
-Marco: "Run!"
-Edrick: "You little-!"
+Marco: "Let her go!" #wait:2
+Edrick: "Where did you get that!?" #wait:2
+ : #wait:1
+Edrick: "No!" #wait:2
+ : #wait:1
+Marco: "Run!" #wait:2
+Edrick: "You little..." : #wait:2
 -> END

@@ -254,10 +254,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Voicelines.bank
   Name: Voicelines
   StudioPath: bank:/Voicelines
-  lastModified: 639276188799964826
+  lastModified: 639276873639730830
   FileSizes:
   - Name: Desktop
-    Value: 1539488
+    Value: 1721440
   Exists: 1
 --- !u!114 &-6077311482116594560
 MonoBehaviour:
@@ -665,7 +665,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639276210396489743
+  lastModified: 639276867708291568
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -718,6 +718,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-63188607227249402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiceline/Exit_Good
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Voiceline/Exit_Good
+  Guid:
+    Data1: -1280369835
+    Data2: 1273814120
+    Data3: -1326560848
+    Data4: 50149362
+  Banks:
+  - {fileID: -6554004672268810976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 13944
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,13 +806,14 @@ MonoBehaviour:
   - {fileID: -2586678418232207584}
   - {fileID: 8184907323292451136}
   - {fileID: -7347948862751190369}
+  - {fileID: -63188607227249402}
   EditorParameters: []
   MasterBanks:
   - {fileID: -896375558402913437}
   StringsBanks:
   - {fileID: 2112365049813751376}
   cacheVersion: 131860
-  cacheTime: 639276210396519768
+  cacheTime: 639276873639730830
   SerializableEventsDict:
   - key: event:/Enviroment/MainMenu
     index: 0
@@ -863,6 +891,8 @@ MonoBehaviour:
     index: 36
   - key: event:/Little_Effects/Edrick Scream_Instant
     index: 37
+  - key: event:/Voiceline/Exit_Good
+    index: 38
 --- !u!114 &889764099412312297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -986,10 +1016,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639276210396519768
+  lastModified: 639276867708311564
   FileSizes:
   - Name: Desktop
-    Value: 2868
+    Value: 2916
   Exists: 1
 --- !u!114 &2758240121736747644
 MonoBehaviour:
