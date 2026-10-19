@@ -69,10 +69,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639268249156471972
+  lastModified: 639280262200893570
   FileSizes:
   - Name: Desktop
-    Value: 5882656
+    Value: 6216704
   Exists: 1
 --- !u!114 &-8335067857534503027
 MonoBehaviour:
@@ -443,6 +443,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 940
+--- !u!114 &-4292814231057702712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Little_Effects/Tension
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Little_Effects/Tension
+  Guid:
+    Data1: -1820474939
+    Data2: 1326100887
+    Data3: 1544536713
+    Data4: -866155328
+  Banks:
+  - {fileID: 9204368208412921036}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 11009
 --- !u!114 &-3940430827090474511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,7 +692,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639276867708291568
+  lastModified: 639280262194383241
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -807,13 +834,15 @@ MonoBehaviour:
   - {fileID: 8184907323292451136}
   - {fileID: -7347948862751190369}
   - {fileID: -63188607227249402}
+  - {fileID: -4292814231057702712}
+  - {fileID: 7930090940020173007}
   EditorParameters: []
   MasterBanks:
   - {fileID: -896375558402913437}
   StringsBanks:
   - {fileID: 2112365049813751376}
   cacheVersion: 131860
-  cacheTime: 639276873639730830
+  cacheTime: 639280262200893570
   SerializableEventsDict:
   - key: event:/Enviroment/MainMenu
     index: 0
@@ -893,6 +922,10 @@ MonoBehaviour:
     index: 37
   - key: event:/Voiceline/Exit_Good
     index: 38
+  - key: event:/Little_Effects/Tension
+    index: 39
+  - key: event:/Music/Final Cutscene
+    index: 40
 --- !u!114 &889764099412312297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,10 +1049,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639276867708311564
+  lastModified: 639280262194403250
   FileSizes:
   - Name: Desktop
-    Value: 2916
+    Value: 3022
   Exists: 1
 --- !u!114 &2758240121736747644
 MonoBehaviour:
@@ -1451,6 +1484,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 350
+--- !u!114 &7930090940020173007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Final Cutscene
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Music/Final Cutscene
+  Guid:
+    Data1: 1798876298
+    Data2: 1198873298
+    Data3: 1455318431
+    Data4: 1004938246
+  Banks:
+  - {fileID: -8424928411519052502}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 28141
 --- !u!114 &8184907323292451136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,8 +1581,8 @@ MonoBehaviour:
   Path: Assets/FMOD/Haunted Dare/Build/Desktop/Effects.bank
   Name: Effects
   StudioPath: bank:/Effects
-  lastModified: 639276210396399711
+  lastModified: 639280262194283219
   FileSizes:
   - Name: Desktop
-    Value: 1166144
+    Value: 1268448
   Exists: 1
