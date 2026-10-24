@@ -1,5 +1,6 @@
 using FMODUnity;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class CutsceneManager : MonoBehaviour
    
     [Header("office")]
     [SerializeField] private GameObject edrick;
+    [SerializeField] private NavMeshAgent agentVeronica;
     
     
     public void PauseMusic(bool isPaused)
@@ -32,6 +34,14 @@ public class CutsceneManager : MonoBehaviour
     {
         veronica.position = tp.position;
         veronica.rotation = tp.rotation;
+    }
+
+    
+    /// Veronica Disappears after Office cutscene due to a glitch with the agent.
+    /// Setting agent component on and off refreshes it and makes veronica stop teleporting
+    public void SetAgentActive(bool active)
+    {
+       agentVeronica.enabled = active; 
     }
 
     public void AfterOfficeCutscene()

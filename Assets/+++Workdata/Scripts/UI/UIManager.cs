@@ -49,6 +49,11 @@ public class UIManager : MonoBehaviour
     {
         DisableUI(deathUIList);
     }
+    
+    public void EnableAfterDeathUI()
+    {
+        EnableUI(deathUIList);
+    }
 
     #region Sound Design
 

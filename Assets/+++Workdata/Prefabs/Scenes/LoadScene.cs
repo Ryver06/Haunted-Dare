@@ -77,6 +77,8 @@ public class LoadScene : MonoBehaviour
       anim_fadepanel.Play("FadePanel_fade_out");
       
       PlayerController.Instance.EnableInput();
+      PlayerController.Instance.SetCursorLocked();
+      UIManager.Instance.EnableAfterDeathUI();
    }
 
    #endregion

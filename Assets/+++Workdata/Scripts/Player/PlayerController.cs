@@ -75,7 +75,6 @@ public class PlayerController : MonoBehaviour
     private GameInput inputActions;
     private InputAction lookAction;
     private InputAction moveAction;
-    private InputAction jumpAction;
     private InputAction interactAction;
     private InputAction flashlightAction;
     private InputAction runAction;
@@ -142,7 +141,6 @@ public class PlayerController : MonoBehaviour
         inputActions = new GameInput();
         lookAction = inputActions.Player.Look;
         moveAction = inputActions.Player.Move;
-        jumpAction = inputActions.Player.Jump;
         interactAction = inputActions.Player.Interact;
         flashlightAction = inputActions.Player.FlashLight;
         runAction = inputActions.Player.Sprint;
@@ -175,9 +173,6 @@ public class PlayerController : MonoBehaviour
         
         moveAction.performed += Move;
         moveAction.canceled += Move;
-
-        jumpAction.performed += Jump;
-        jumpAction.canceled += Jump;
 
         interactAction.performed += Interaction;
         
@@ -222,9 +217,6 @@ public class PlayerController : MonoBehaviour
         
         moveAction.performed -= Move;
         moveAction.canceled -= Move;
-        
-        jumpAction.performed -= Jump;
-        jumpAction.canceled -= Jump;
         
         interactAction.performed -= Interaction;
         
@@ -283,14 +275,6 @@ public class PlayerController : MonoBehaviour
         _lookInput = ctx.ReadValue<Vector2>();
     }
     
-    private void Jump(InputAction.CallbackContext ctx)
-    {
-        if (_isGrounded && _canJump)
-        {
-            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-            anim.SetTrigger(Hash_Jump);
-        }
-    }
     
     private void Flashlight(InputAction.CallbackContext ctx)
     {
